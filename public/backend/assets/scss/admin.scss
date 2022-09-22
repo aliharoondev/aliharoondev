@@ -1,0 +1,14 @@
+$sidebar-bg: #2B333E;
+$primary: #7952b3;
+$success: #2ecc71;
+$info: #5bc0de;
+$warning: #f1c40f;
+$danger:#e74c3c;
+
+@import "supporting/bootstrap/bootstrap";
+@import "supporting/mdi/materialdesignicons";
+@import "supporting/global";
+@import "supporting/login-register";
+@import "supporting/app-header";
+@import "supporting/app-sidebar";
+@import "supporting/app-footer";

@@ -1,0 +1,33 @@
+.at-guest-layout {
+    @extend .py-5,
+    .px-3,
+    .d-flex,
+    .align-items-center;
+    min-height: 100vh;
+
+    .at-logo {
+        @extend .mx-auto;
+        max-width: 150px;
+        margin-bottom: 2rem;
+    }
+
+    .container-fluid {
+        max-width: 400px;
+    }
+
+    .gl-card {
+        @extend .bg-white,
+        .p-4,
+        .rounded;
+        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
+
+        &-head {
+            @extend .text-center;
+            margin: 1rem 0 2rem 0;
+        }
+
+        .form-control {
+            //@extend .form-control-lg;
+        }
+    }
+}

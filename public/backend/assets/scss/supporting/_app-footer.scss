@@ -1,0 +1,12 @@
+.at-footer {
+    @extend .p-3,
+    .w-100,
+    .position-absolute;
+    left: 0;
+    bottom: 0;
+
+    p {
+        @extend .text-center,
+        .my-1;
+    }
+}
