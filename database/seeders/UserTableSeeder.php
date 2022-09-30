@@ -15,14 +15,20 @@ class UserTableSeeder extends Seeder
     {
         User::create([
             'name' => 'superadmin',
-            'email' => 'superadmin@exprsol.com',
+            'title' => 'Frelancer',
+            'image' => 'user/user1.jpg',
+            'sumary' => 'superadmin',
+            'email' => 'superadmin2@exprsol.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
         User::create([
             'name' => 'User',
-            'email' => 'user@exprsol.com',
+            'title' => 'Web Developer',
+            'image' => 'user/user2.jpg',
+            'sumary' => 'superadmin',
+            'email' => 'user2@exprsol.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

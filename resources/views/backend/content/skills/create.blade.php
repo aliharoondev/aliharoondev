@@ -15,9 +15,9 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col form-group">
-                                        <label class="form-control-label">Name</label>
-                                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Name"/>
-                                        @error('name')
+                                        <label class="form-control-label">Title</label>
+                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="Title"/>
+                                        @error('title')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -30,24 +30,7 @@
                                         @endforeach
                                         </select>
                                </div>
-                                <div class="row">
-                                    <div class="col form-group">
-                                        <label class="form-control-label">Detail</label>
-                                        <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror" value="{{old('detail')}}" placeholder="Detail"></textarea>
-                                        @error('detail')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col form-group">
-                                        <label class="form-control-label">Title</label>
-                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="Title"/>
-                                        @error('title')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                               
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Percentage</label>
@@ -57,13 +40,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                            <label for="category" class="form-label">Status</label>
-                                            <select class="form-control select" name="status" >
-                                                <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
-                                            </select>
-                                        </div>
                                 <div class="row">
                                     <div class="col text-right">
                                         <input type="submit" class="btn btn-primary input-lg" value="Add New Skill"/>

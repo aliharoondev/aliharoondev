@@ -57,6 +57,13 @@ class PortfolioDetailController extends Controller
      */
     public function store(Request $request)
     {
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        //     'portfolio_id' => 'required',
+        //     'category' => 'required',
+        //     'client' => 'required',
+        //     'project_date' => 'required',
+        // ]);
         $path= '';
          $portfolio = new portfolioDetail();
          $portfolio->title = $request->title;
@@ -102,9 +109,9 @@ class PortfolioDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(portfolioDetail $portfolio_detail)
     {
-        //
+        return view('backend.content.portfolio_details.edit',compact('portfolio_detail'));
     }
 
     /**
@@ -116,7 +123,33 @@ class PortfolioDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $portfolio_detail = Portfolio::find($id);
+
+        $path= '';
+        $portfolio_detail->title = $request->title;
+        $portfolio_detail->detail = $request->detail;
+        $portfolio_detail->portfolio_id = $request->portfolio;
+        $portfolio_detail->status = $request->status;
+        $portfolio_detail->category = $request->category;
+        $portfolio_detail->client = $request->client;
+        $portfolio_detail->project_date = $request->project_date;
+        $portfolio_detail->project_url = $request->project_url;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $request->file('image')->storePubliclyAs('portfolio_detail',$filename);
+            }  
+        $portfolio_detail->image = $path;   
+
+        if ($request->hasFile('image2')) {
+           $image2 = $request->file('image2');
+           $filename = time() . '.' . $image2->getClientOriginalExtension();
+           $path = $request->file('image2')->storePubliclyAs('portfolio_detail',$filename);
+           }  
+       $portfolio_detail->image2 = $path;   
+        $portfolio_detail->save();
+        return  redirect()->route('portfolio-details.index')->with('success','Portfolio Detail Update Successfully');
     }
 
     /**

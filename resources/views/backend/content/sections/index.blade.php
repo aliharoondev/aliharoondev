@@ -25,7 +25,7 @@
                             </button>
                         </div>
                     @endif
-                    <h4>List of all the Facts</h4>
+                    <h4>List of all the Section</h4>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
@@ -36,7 +36,6 @@
                                         <th>Id</th>
                                         <th>Title</th>
                                         <th>detail</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -60,7 +59,6 @@
                     {data:'id',name:'id'},
                     {data:'title',name:'title'},
                     {data:'detail',name:'detail'},
-                    {data:'status',name:'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

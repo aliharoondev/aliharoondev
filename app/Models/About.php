@@ -9,6 +9,8 @@ class About extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $table = 'abouts';
+    // protected $fillable = ['title','section' ,'phone' ,'email','address','short_discription','birth_date','website_url','detail','freelance'];
     
     public function section()
     {

@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="{{route('abouts.create')}}" class="btn btn-info">Add New About</a>
+                            <a href="{{route('about.create')}}" class="btn btn-info">Add New About</a>
                         </div>
                     </div>
                     @if (session('success'))
@@ -55,7 +55,7 @@
             $('#tblAbouts').DataTable({
                 processing:true,
                 serverSide:true,
-                ajax:"{{route('abouts.index')}}",
+                ajax:"{{route('about.index')}}",
                 columns:[
                     {data:'id',name:'id'},
                     {data:'title',name:'title'},

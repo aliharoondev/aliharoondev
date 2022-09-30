@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="{{route('facts.create')}}" class="btn btn-info">Add New Service</a>
+                            <a href="{{route('services.create')}}" class="btn btn-info">Add New Service</a>
                         </div>
                     </div>
                     @if (session('success'))
@@ -25,7 +25,7 @@
                             </button>
                         </div>
                     @endif
-                    <h4>List of all the Facts</h4>
+                    <h4>List of all the services</h4>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">

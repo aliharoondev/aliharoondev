@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="{{route('portfolios.create')}}" class="btn btn-info">Add New Portfolio</a>
+                            <a href="{{route('portfolio.create')}}" class="btn btn-info">Add New Portfolio</a>
                         </div>
                     </div>
                     @if (session('success'))
@@ -25,7 +25,7 @@
                             </button>
                         </div>
                     @endif
-                    <h4>List of all the Educations</h4>
+                    <h4>List of all the Portfolio</h4>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
@@ -38,7 +38,6 @@
                                         <th>detail</th>
                                         <th>Image</th>
                                         <th>Category</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -57,14 +56,13 @@
             $('#tblPortfolios').DataTable({
                 processing:true,
                 serverSide:true,
-                ajax:"{{route('portfolios.index')}}",
+                ajax:"{{route('portfolio.index')}}",
                 columns:[
                     {data:'id',name:'id'},
                     {data:'title',name:'title'},
                     {data:'detail',name:'detail'},
                     {data:'image',name:'image'},
                     {data:'category',name:'category'},
-                    {data:'status',name:'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

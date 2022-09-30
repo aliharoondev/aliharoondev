@@ -12,15 +12,15 @@
                     <li class="has-submenu">
                         <a href="#"><i class="mdi mdi-city"></i><span>Education</span></a>
                         <ul class="at-submenu">
-                            <li><a href="{{route('educations.create')}}">Create Education</a></li>
-                            <li><a href="{{route('educations.index')}}">All Education</a></li>
+                            <li><a href="{{route('education.create')}}">Create Education</a></li>
+                            <li><a href="{{route('education.index')}}">All Education</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
                         <a href="#"><i class="mdi mdi-city"></i><span>Portfolio</span></a>
                         <ul class="at-submenu">
-                            <li><a href="{{route('portfolios.create')}}">Create Portfolio</a></li>
-                            <li><a href="{{route('portfolios.index')}}">All Portfolio</a></li>
+                            <li><a href="{{route('portfolio.create')}}">Create Portfolio</a></li>
+                            <li><a href="{{route('portfolio.index')}}">All Portfolio</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
@@ -33,8 +33,22 @@
                     <li class="has-submenu">
                         <a href="#"><i class="mdi mdi-city"></i><span>About</span></a>
                         <ul class="at-submenu">
-                            <li><a href="{{route('abouts.create')}}">Create About</a></li>
-                            <li><a href="{{route('abouts.index')}}">All About</a></li>
+                            <li><a href="{{route('about.create')}}">Create About</a></li>
+                            <li><a href="{{route('about.index')}}">All About</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-city"></i><span>Experience</span></a>
+                        <ul class="at-submenu">
+                            <li><a href="{{route('experience.create')}}">Create Experience</a></li>
+                            <li><a href="{{route('experience.index')}}">All Experience</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-city"></i><span>Contact</span></a>
+                        <ul class="at-submenu">
+                            <li><a href="{{route('contact.create')}}">Create Contact</a></li>
+                            <li><a href="{{route('contact.index')}}">All Contact</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
@@ -49,6 +63,20 @@
                         <ul class="at-submenu">
                             <li><a href="{{route('sections.create')}}">Create Section</a></li>
                             <li><a href="{{route('sections.index')}}">All Sections</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-city"></i><span>Testimonial</span></a>
+                        <ul class="at-submenu">
+                            <li><a href="{{route('testimonial.create')}}">Create Testimonial</a></li>
+                            <li><a href="{{route('testimonial.index')}}">All Testimonial</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-city"></i><span>Social Link</span></a>
+                        <ul class="at-submenu">
+                            <li><a href="{{route('sociallink.create')}}">Create Social Link</a></li>
+                            <li><a href="{{route('sociallink.index')}}">All Social Link</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">

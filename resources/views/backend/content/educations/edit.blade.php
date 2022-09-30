@@ -9,13 +9,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <form action="{{route('educations.update',$education->id)}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('education.update',$education->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Title</label>
-                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="Title"/>
+                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $education->title }}" placeholder="Title"/>
                                         @error('title')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -24,15 +24,16 @@
                                 <div class="mb-3">
                                    <label for="category" class="form-label">Section</label>
                                         <select class="form-control select" name="section" >
-                                        @foreach($services as $service)
-                                        <option value="{!! $education->title !!}">{!! $education->title !!}</option>
-                                        @endforeach
+                                        @foreach($sections as $section)
+                                                <option value="{!! $section->id !!}" {{$section->id==$education->section_id ? 'selected' : ''}}>{!! $section->title !!}</option>
+
+                                            @endforeach
                                         </select>
                                </div>
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Degree</label>
-                                        <input type="text" id="degree" name="degree" class="form-control @error('degree') is-invalid @enderror" value="{{old('degree')}}" placeholder="Degree"/>
+                                        <input type="text" id="degree" name="degree" class="form-control @error('degree') is-invalid @enderror" value="{{ $education->degree }}" placeholder="Degree"/>
                                         @error('degree')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -41,7 +42,7 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Session</label>
-                                        <input type="text" id="session" name="session" class="form-control @error('session') is-invalid @enderror" value="{{old('session')}}" placeholder="Session"/>
+                                        <input type="text" id="session" name="session" class="form-control @error('session') is-invalid @enderror" value="{{ $education->session }}" placeholder="Session"/>
                                         @error('session')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -50,7 +51,7 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Institude</label>
-                                        <input type="text" id="institude" name="institude" class="form-control @error('institude') is-invalid @enderror" value="{{old('institude')}}" placeholder="Institude"/>
+                                        <input type="text" id="institude" name="institude" class="form-control @error('institude') is-invalid @enderror" value="{{ $education->institude }}" placeholder="Institude"/>
                                         @error('institude')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -59,7 +60,7 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Detail</label>
-                                        <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror" value="{{old('detail')}}" placeholder="Detail"></textarea>
+                                        <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror"  placeholder="Detail">{{ $education->title }}</textarea>
                                         @error('detail')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -74,7 +75,7 @@
                                         </div>
                                 <div class="row">
                                     <div class="col text-right">
-                                        <input type="submit" class="btn btn-primary input-lg" value="Update Skill"/>
+                                        <input type="submit" class="btn btn-primary input-lg" value="Update Education"/>
                                     </div>
                                 </div>
                             </form>

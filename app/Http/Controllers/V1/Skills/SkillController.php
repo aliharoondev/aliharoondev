@@ -55,13 +55,14 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        //     'section_id' => 'required',
+        // ]);
         $skill = new Skill();
-        $skill->name = $request->name;
-        $skill->section_id = $request->section;
-        $skill->detail = $request->detail;
         $skill->title = $request->title;
+        $skill->section_id = $request->section;
         $skill->percentage = $request->percentage;
-        $skill->status = $request->status;
         $skill->save();
         return  redirect()->route('skills.index')->with('success','Skill Added Successfully');
     }
@@ -83,9 +84,10 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Skill $skill)
     {
-        //
+        $sections = Section::select('id', 'title')->get();
+        return view('backend.content.skills.edit',compact('sections','skill'));
     }
 
     /**
@@ -97,7 +99,13 @@ class SkillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $skill = Skill::find($id);
+        $skill = new Skill();
+        $skill->title = $request->title;
+        $skill->section_id = $request->section;
+        $skill->percentage = $request->percentage;
+        $skill->save();
+        return  redirect()->route('skills.index')->with('success','Skill Update Successfully');
     }
 
     /**

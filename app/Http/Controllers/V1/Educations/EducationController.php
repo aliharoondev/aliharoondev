@@ -5,8 +5,8 @@ namespace App\Http\Controllers\V1\Educations;
 use App\Http\Controllers\Controller;
 use App\Models\Education;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StoreEducationRequest;
-use App\Http\Requests\V1\Categories\UpdateEducationRequest;
+use App\Http\Requests\V1\Education\StoreEducationRequest;
+use App\Http\Requests\V1\Education\UpdateEducationRequest;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
 class EducationController extends Controller
@@ -25,7 +25,7 @@ class EducationController extends Controller
             $educations = Education::query();
             return DataTables::of($educations)
                 ->addColumn('action', function ($education) {
-                    $url = route('educations.edit',$education->id);
+                    $url = route('education.edit',$education->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
                             ";
@@ -54,8 +54,15 @@ class EducationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEducationRequest $request)
     {
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        //     'section_id' => 'required',
+        //     'degree' => 'required',
+        //     'session' => 'required',
+        //     'institude' => 'required',
+        // ]);
         $education = new Education();
         $education->title = $request->title;
         $education->section_id = $request->section;
@@ -65,7 +72,7 @@ class EducationController extends Controller
         $education->detail = $request->detail;
         $education->status = $request->status;
         $education->save();
-        return  redirect()->route('educations.index')->with('success','Education Added Successfully');
+        return  redirect()->route('education.index')->with('success','Education Added Successfully');
     }
 
     /**
@@ -85,9 +92,10 @@ class EducationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Education $education)
     {
-        //
+        $sections = Section::select('id', 'title')->get();
+        return view('backend.content.educations.edit',compact('sections','education'));
     }
 
     /**
@@ -97,9 +105,18 @@ class EducationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEducationRequest $request, $id)
     {
-        //
+        $education = Education::find($id);
+        $education->title = $request->title;
+        $education->section_id = $request->section;
+        $education->degree = $request->degree;
+        $education->session = $request->session;
+        $education->institude = $request->institude;
+        $education->detail = $request->detail;
+        $education->status = $request->status;
+        $education->save();
+        return  redirect()->route('education.index')->with('success','Education Update Successfully');
     }
 
     /**

@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Title</label>
-                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="Title"/>
+                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $service->title }}" placeholder="Title"/>
                                         @error('title')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -25,14 +25,15 @@
                                    <label for="category" class="form-label">Section</label>
                                         <select class="form-control select" name="section" >
                                         @foreach($sections as $section)
-                                        <option value="{!! $section->id !!}">{!! $section->title !!}</option>
-                                        @endforeach
+                                                <option value="{!! $section->id !!}" {{$section->id==$service->section_id ? 'selected' : ''}}>{!! $section->title !!}</option>
+
+                                            @endforeach
                                         </select>
                                </div>
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Detail</label>
-                                        <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror" value="{{old('detail')}}" placeholder="Detail"></textarea>
+                                        <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror"  placeholder="Detail">{{ $service->detail }}</textarea>
                                         @error('detail')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -40,9 +41,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
-                                        <label class="form-control-label">Image</label>
-                                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}" placeholder="Image"/>
-                                        @error('image')
+                                        <label class="form-control-label">Icon</label>
+                                        <input type="text" id="icon" name="icon" class="form-control @error('image') is-invalid @enderror" value="{{ $service->icon }}" placeholder="Icon"/>
+                                        @error('icon')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
