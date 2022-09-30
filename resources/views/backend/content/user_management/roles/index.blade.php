@@ -1,9 +1,6 @@
 @extends('layouts.backend-master')
 @section('styles')
     <link href="{{ URL::asset('theme/global/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css"/>
-    <style>
-        .dataTables_filter { display: none; }
-    </style>
 @stop
 @section('content')
     <h1 class="page-title">
@@ -75,8 +72,6 @@
             var table = $('#tblRoles').DataTable({
 
                 // begin first table
-
-                responsive: true,
                 searchDelay: 500,
                 processing: true,
                 serverSide: true,
