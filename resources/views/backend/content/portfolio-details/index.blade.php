@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
-                                <table id="tblortfolioDetails"
+                                <table id="tblPortfolioDetails"
                                        class="table table-striped- table-bordered table-hover table-checkable">
                                     <thead>
                                     <tr>
@@ -52,7 +52,7 @@
 @section('scripts')
     <script>
         $(document).ready(function () {
-            $('#tblortfolioDetails').DataTable({
+            $('#tblPortfolioDetails').DataTable({
                 processing:true,
                 serverSide:true,
                 ajax:"{{route('portfolio-details.index')}}",

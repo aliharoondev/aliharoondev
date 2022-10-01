@@ -26,7 +26,7 @@ class PortfolioDetailController extends Controller
             $portfolio_details = portfolioDetail::query();
             return DataTables::of($portfolio_details)
                 ->addColumn('action', function ($portfolio_detail) {
-                    $url = route('portfolios.edit',$portfolio_detail->id);
+                    $url = route('portfolio-details.edit',$portfolio_detail->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
                             ";
@@ -34,7 +34,7 @@ class PortfolioDetailController extends Controller
                 ->make(true);
         }
 
-        return view('backend.content.portfolios.index',['portfolio_details'=>$portfolio_details]);
+        return view('backend.content.portfolio-details.index',['portfolio_details'=>$portfolio_details]);
     }
 
     /**
@@ -57,13 +57,6 @@ class PortfolioDetailController extends Controller
      */
     public function store(Request $request)
     {
-        // $validated = $request->validate([
-        //     'title' => 'required',
-        //     'portfolio_id' => 'required',
-        //     'category' => 'required',
-        //     'client' => 'required',
-        //     'project_date' => 'required',
-        // ]);
         $path= '';
          $portfolio = new portfolioDetail();
          $portfolio->title = $request->title;
@@ -74,20 +67,20 @@ class PortfolioDetailController extends Controller
          $portfolio->client = $request->client;
          $portfolio->project_date = $request->project_date;
          $portfolio->project_url = $request->project_url;
- 
+
          if ($request->hasFile('image')) {
              $image = $request->file('image');
              $filename = time() . '.' . $image->getClientOriginalExtension();
              $path = $request->file('image')->storePubliclyAs('portfolio_detail',$filename);
-             }  
-         $portfolio->image = $path;   
+             }
+         $portfolio->image = $path;
 
          if ($request->hasFile('image2')) {
             $image2 = $request->file('image2');
             $filename = time() . '.' . $image2->getClientOriginalExtension();
             $path = $request->file('image2')->storePubliclyAs('portfolio_detail',$filename);
-            }  
-        $portfolio->image2 = $path;   
+            }
+        $portfolio->image2 = $path;
          $portfolio->save();
          return  redirect()->route('portfolio-details.index')->with('success','Portfolio Added Successfully');
      }
@@ -139,15 +132,15 @@ class PortfolioDetailController extends Controller
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $request->file('image')->storePubliclyAs('portfolio_detail',$filename);
-            }  
-        $portfolio_detail->image = $path;   
+            }
+        $portfolio_detail->image = $path;
 
         if ($request->hasFile('image2')) {
            $image2 = $request->file('image2');
            $filename = time() . '.' . $image2->getClientOriginalExtension();
            $path = $request->file('image2')->storePubliclyAs('portfolio_detail',$filename);
-           }  
-       $portfolio_detail->image2 = $path;   
+           }
+       $portfolio_detail->image2 = $path;
         $portfolio_detail->save();
         return  redirect()->route('portfolio-details.index')->with('success','Portfolio Detail Update Successfully');
     }
