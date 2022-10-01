@@ -12,15 +12,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('portfolio-detail', function () {
-    return view('frontend.content.pages.portfolio-details');
-});
-
 Route::get('/', 'General\PagesController@landing')->name('landing');
-Route::get('portfolio-detail/{id}', 'General\PagesController@portfolio_detail')->name('portfolio-detail');
+
 Route::post('/contact', 'General\ContactController@store')->name('contact.store');
 
-// Route::get('/', [General\PagesController::class, 'landing'])->name('landing');
+ Route::get('/', 'General\PagesController@landing')->name('landing');
+ Route::get('portfolio-detail/{id}', 'General\PagesController@portfolio_detail')->name('portfolio-detail');
+
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

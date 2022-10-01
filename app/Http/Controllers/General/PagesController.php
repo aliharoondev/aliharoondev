@@ -22,7 +22,7 @@ class PagesController extends Controller
 {
     public function landing()
     {
-       
+
         $skills = Skill::select('id','title','percentage')->get();
         $section = Section::select('id','title','detail')->get();
         $sociallinks = SocialLink::select('id','title','icon','link')->get();
@@ -35,12 +35,12 @@ class PagesController extends Controller
         $educations = Education::select('id','detail','title','degree','institude','session')->get();
         $experiences = Experience::select('id','title','start_date','end_date','company_name','company_address','work_type','job_type','detail')->get();
         $testimonials = Testimonial::select('id','name','title','image','testimonial_text')->get();
-        return view('frontend.content.pages.index',  compact('skills','educations','portfolios','facts','abouts','services','experiences','contact','testimonials','user','sociallinks','section'));   
+        return view('frontend.content.pages.index',  compact('skills','educations','portfolios','facts','abouts','services','experiences','contact','testimonials','user','sociallinks','section'));
     }
 
     public function portfolio_detail($id)
     {
-        $portfolio = PortfolioDetail::where('portfolio_id',$id)->first();
-        return view('frontend.content.pages.portfolio-details',compact('portfolio'));
+        $portfolioDetail = PortfolioDetail::where('portfolio_id',$id)->first();
+        return view('frontend.content.pages.portfolio-details',compact('portfolioDetail'));
     }
 }
