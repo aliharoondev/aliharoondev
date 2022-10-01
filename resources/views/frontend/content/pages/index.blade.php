@@ -182,7 +182,6 @@
         <ul id="portfolio-flters">
           <li data-filter="*" class="filter-active">All</li>
           <li data-filter=".app">App</li>
-          <li data-filter=".ios">Ios</li>
           <li data-filter=".web">Web</li>
           <li data-filter=".graphic">Graphic</li>
         </ul>
@@ -285,13 +284,13 @@
                 <div class="email">
                   <i class="bi bi-envelope"></i>
                   <h4>Email:</h4>
-                  <p>{{$contact->email}}</p>
+                  <p><a href="mailto:{{$contact->email}}">{{$contact->email}}</p>
                 </div>
 
                 <div class="phone">
                   <i class="bi bi-phone"></i>
                   <h4>Call:</h4>
-                  <p>{{$contact->phone}}</p>
+                  <p><a href="tel:{{$contact->phone}}">{{$contact->phone}}</a></p>
                 </div>
                 <iframe src="{{$contact->location}}"></iframe>
              </div>
@@ -310,7 +309,7 @@
               <label for="name">Your Email</label>
               <input type="email" class="form-control" name="email" id="email" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <label for="name">Your Phone</label>
               <input type="text" class="form-control" name="phone" id="phone" required>
             </div>
