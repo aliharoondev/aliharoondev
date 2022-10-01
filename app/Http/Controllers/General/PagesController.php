@@ -23,19 +23,19 @@ class PagesController extends Controller
     public function landing()
     {
 
+        $sections = Section::select('id','title','detail')->get();
         $skills = Skill::select('id','title','percentage')->get();
-        $section = Section::select('id','title','detail')->get();
         $sociallinks = SocialLink::select('id','title','icon','link')->get();
         $user = User::select('id','title','image','sumary','email','address','phone')->where('id',2)->first();
         $contact = ContactUs::select('id','address','email','phone','location')->get();
         $services = Service::select('id', 'title','detail','icon')->get();
-        $abouts = About::select('id', 'title','short_discription','birth_date','website_url','degree','phone','email','address','detail','freelance','image')->get();
+        $about = About::select('id', 'title','short_discription','birth_date','website_url','degree','phone','email','address','detail','freelance','image')->get();
         $facts = Fact::select('id', 'title','detail','icon')->get();
         $portfolios = Portfolio::select('id', 'title','detail','category','image')->get();
         $educations = Education::select('id','detail','title','degree','institude','session')->get();
         $experiences = Experience::select('id','title','start_date','end_date','company_name','company_address','work_type','job_type','detail')->get();
         $testimonials = Testimonial::select('id','name','title','image','testimonial_text')->get();
-        return view('frontend.content.pages.index',  compact('skills','educations','portfolios','facts','abouts','services','experiences','contact','testimonials','user','sociallinks','section'));
+        return view('frontend.content.pages.index',  compact('sections','skills','educations','portfolios','facts','about','services','experiences','contact','testimonials','user','sociallinks'));
     }
 
     public function portfolio_detail($id)

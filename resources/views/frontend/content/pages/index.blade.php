@@ -4,44 +4,44 @@
  <main id="main">
 
 <!-- ======= About Section ======= -->
-<section id="about" class="about">
+<section id="{{strtolower($sections[0]->title)}}" class="{{strtolower($sections[0]->title)}}">
   <div class="container">
 
     <div class="section-title">
-      <h2>About</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+      <h2>{{strtolower($sections[0]->title)}}</h2>
+      <p>{{$sections[0]->detail}}</p>
     </div>
 
     <div class="row">
-    @foreach($abouts as $about)
+    @foreach($about as $ab)
       <div class="col-lg-4" data-aos="fade-right">
-        <img src="{{ url('storage/' . $about->image) }}" class="img-fluid" alt="">
+        <img src="{{ url('storage/' . $ab->image) }}" class="img-fluid" alt="">
       </div>
       <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-        <h3>{{$about->title}}</h3>
+        <h3>{{$ab->title}}</h3>
         <p class="fst-italic">
-        {{$about->short_discription}}
+        {{$ab->short_discription}}
         </p>
         <div class="row">
           <div class="col-lg-6">
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>{{ $about->birth_date }}</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>{{$about->website_url}}</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{$about->phone}}</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{$about->address}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>{{ $ab->birth_date }}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>{{$ab->website_url}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{$ab->phone}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{$ab->address}}</span></li>
             </ul>
           </div>
           <div class="col-lg-6">
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ $about->age() }}</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>{{$about->degree}}</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{$about->email}}</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>{{$about->freelance}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ $ab->age() }}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>{{$ab->degree}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{$ab->email}}</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>{{$ab->freelance}}</span></li>
             </ul>
           </div>
         </div>
         <p>
-        {{$about->detail}}
+        {{$ab->detail}}
          </p>
       </div>
       @endforeach
@@ -87,7 +87,7 @@
     <div class="row skills-content">
 
 
-      
+
       @foreach($skills as $skill)
         @if($loop->index % 2 == 1)
         <div class="col-lg-6" data-aos="fade-up">
@@ -99,9 +99,9 @@
           </div>
         </div>
         @endif
-      
-      
-      
+
+
+
       @if($loop->index % 2 == 0)
       <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
         <div class="progress">
@@ -224,7 +224,7 @@
           <p class="description">{{$service->detail}}</p>
         </div>
       @endforeach
-    
+
     </div>
 
   </div>
@@ -246,7 +246,7 @@
           <div class="testimonial-item" data-aos="fade-up">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              {{$testimonial->testimonial_text}}             
+              {{$testimonial->testimonial_text}}
                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
             <img src="{{ url('storage/' . $testimonial->image) }}" class="testimonial-img" alt="">
@@ -296,7 +296,7 @@
                 <iframe src="{{$contact->location}}"></iframe>
              </div>
              @endforeach
-            
+
       </div>
 
       <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
