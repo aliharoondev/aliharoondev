@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->string('detail');
             $table->string('status')->default('active');
             $table->timestamps();

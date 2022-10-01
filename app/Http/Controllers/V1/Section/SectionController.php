@@ -9,6 +9,7 @@ use App\Http\Requests\V1\Categories\UpdateSectionRequest;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SectionController extends Controller
 {
@@ -59,7 +60,8 @@ class SectionController extends Controller
         // ]);
         $section = new Section();
         $section->title = $request->title;
-        $section->detail = $request->detail;  
+        $section->detail = $request->detail; 
+        $section->slug = Str::lower($request->input('slug'), "-");
         $section->status = $request->status;  
         $section->save();
         return  redirect()->route('sections.index')->with('success','Section Added Successfully');
@@ -97,9 +99,9 @@ class SectionController extends Controller
     public function update(Request $request, $id)
     {
         $section = Section::find($id);
-        $section = new Section();
         $section->title = $request->title;
-        $section->detail = $request->detail;  
+        $section->detail = $request->detail;
+        $section->slug = Str::lower($request->input('slug'), "-");
         $section->status = $request->status;  
         $section->save();
         return  redirect()->route('sections.index')->with('success','Section Update Successfully');

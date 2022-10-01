@@ -23,7 +23,7 @@ class PagesController extends Controller
     public function landing()
     {
 
-        $sections = Section::select('id','title','detail')->get();
+        $sections = Section::select('id','title','detail','slug')->get();
         $skills = Skill::select('id','title','percentage')->get();
         $sociallinks = SocialLink::select('id','title','icon','link')->get();
         $user = User::select('id','title','image','sumary','email','address','phone')->where('id',2)->first();
