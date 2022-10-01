@@ -1,7 +1,7 @@
 <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>iPortfolio</span></strong>
+        &copy; Copyright <strong><span>AliHaroon.dev</span></strong>
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

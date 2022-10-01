@@ -4,11 +4,11 @@
  <main id="main">
 
 <!-- ======= About Section ======= -->
-<section id="{{strtolower($sections[0]->title)}}" class="{{strtolower($sections[0]->title)}}">
+<section id="{{strtolower($sections[0]->slug)}}" class="{{strtolower($sections[0]->slug)}}">
   <div class="container">
 
     <div class="section-title">
-      <h2>{{strtolower($sections[0]->title)}}</h2>
+      <h2>{{($sections[0]->title)}}</h2>
       <p>{{$sections[0]->detail}}</p>
     </div>
 
@@ -51,12 +51,12 @@
 </section><!-- End About Section -->
 
 <!-- ======= Facts Section ======= -->
-<section id="facts" class="facts">
+<section id="{{strtolower($sections[0]->slug)}}" class="{{strtolower($sections[1]->slug)}}">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Facts</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+  <div class="section-title">
+      <h2>{{($sections[1]->title)}}</h2>
+      <p>{{$sections[1]->detail}}</p>
     </div>
 
     <div class="row no-gutters">
@@ -76,12 +76,12 @@
 </section><!-- End Facts Section -->
 
 <!-- ======= Skills Section ======= -->
-<section id="skills" class="skills section-bg">
+<section id="{{strtolower($sections[2]->slug)}}" class="{{strtolower($sections[2]->slug)}}">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Skills</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+  <div class="section-title">
+      <h2>{{($sections[2]->title)}}</h2>
+      <p>{{$sections[2]->detail}}</p>
     </div>
 
     <div class="row skills-content">
@@ -119,12 +119,12 @@
 </section><!-- End Skills Section -->
 
 <!-- ======= Resume Section ======= -->
-<section id="resume" class="resume">
+<section id="{{strtolower($sections[3]->slug)}}" class="{{strtolower($sections[3]->slug)}}">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Resume</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+  <div class="section-title">
+      <h2>{{($sections[3]->title)}}</h2>
+      <p>{{$sections[3]->detail}}</p>
     </div>
 
     <div class="row">
@@ -140,7 +140,7 @@
           </ul>
         </div>
 
-        <h3 class="resume-title">Education</h3>
+        <h3 class="resume-title">{{($sections[4]->title)}}</h3>
         @foreach($educations as $edu)
         <div class="resume-item">
           <h4>{{$edu->title}}</h4>
@@ -151,7 +151,7 @@
         @endforeach
       </div>
       <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="resume-title">Professional Experience</h3>
+        <h3 class="resume-title">{{($sections[5]->title)}}</h3>
         @foreach($experiences as $experience)
           <div class="resume-item">
             <h4>{{$experience->title}}</h4>
@@ -169,12 +169,12 @@
 </section><!-- End Resume Section -->
 
 <!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio section-bg">
+<section id="{{strtolower($sections[6]->slug)}}" class="{{strtolower($sections[6]->slug)}}">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Portfolio</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+  <div class="section-title">
+      <h2>{{($sections[6]->title)}}</h2>
+      <p>{{$sections[6]->detail}}</p>
     </div>
 
     <div class="row" data-aos="fade-up">
@@ -182,7 +182,6 @@
         <ul id="portfolio-flters">
           <li data-filter="*" class="filter-active">All</li>
           <li data-filter=".app">App</li>
-          <li data-filter=".ios">Ios</li>
           <li data-filter=".web">Web</li>
           <li data-filter=".graphic">Graphic</li>
         </ul>
@@ -208,12 +207,12 @@
 </section><!-- End Portfolio Section -->
 
 <!-- ======= Services Section ======= -->
-<section id="services" class="services">
+<section id="{{strtolower($sections[7]->slug)}}" class="{{strtolower($sections[7]->slug)}}">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Services</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+  <div class="section-title">
+      <h2>{{($sections[7]->title)}}</h2>
+      <p>{{$sections[7]->detail}}</p>
     </div>
 
     <div class="row">
@@ -231,12 +230,12 @@
 </section><!-- End Services Section -->
 
 <!-- ======= Testimonials Section ======= -->
-<section id="testimonials" class="testimonials section-bg">
+<section id="{{strtolower($sections[8]->slug)}}" class="{{strtolower($sections[8]->slug)}}">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Testimonials</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+  <div class="section-title">
+      <h2>{{($sections[8]->title)}}</h2>
+      <p>{{$sections[8]->detail}}</p>
     </div>
 
     <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -263,12 +262,12 @@
 </section><!-- End Testimonials Section -->
 
 <!-- ======= Contact Section ======= -->
-<section id="contact" class="contact">
+<section id="{{strtolower($sections[9]->slug)}}" class="{{strtolower($sections[9]->slug)}}">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Contact</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+  <div class="section-title">
+      <h2>{{($sections[9]->title)}}</h2>
+      <p>{{$sections[9]->detail}}</p>
     </div>
 
     <div class="row" data-aos="fade-in">
@@ -285,13 +284,13 @@
                 <div class="email">
                   <i class="bi bi-envelope"></i>
                   <h4>Email:</h4>
-                  <p>{{$contact->email}}</p>
+                  <p><a href="mailto:{{$contact->email}}">{{$contact->email}}</p>
                 </div>
 
                 <div class="phone">
                   <i class="bi bi-phone"></i>
                   <h4>Call:</h4>
-                  <p>{{$contact->phone}}</p>
+                  <p><a href="tel:{{$contact->phone}}">{{$contact->phone}}</a></p>
                 </div>
                 <iframe src="{{$contact->location}}"></iframe>
              </div>
@@ -310,7 +309,7 @@
               <label for="name">Your Email</label>
               <input type="email" class="form-control" name="email" id="email" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <label for="name">Your Phone</label>
               <input type="text" class="form-control" name="phone" id="phone" required>
             </div>
