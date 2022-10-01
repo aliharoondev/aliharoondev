@@ -9,13 +9,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <form action="{{route('sections.update',$service->id)}}" method="post" eenctype="multipart/form-data">
+                            <form action="{{route('sections.update',$section->id)}}" method="post" eenctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Title</label>
-                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="Title"/>
+                                        <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $section->title }}" placeholder="Title"/>
                                         @error('title')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -24,7 +24,7 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Detail</label>
-                                        <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror" value="{{old('detail')}}" placeholder="Detail"></textarea>
+                                        <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror"  placeholder="Detail">{{ $section->detail }}</textarea>
                                         @error('detail')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

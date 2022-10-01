@@ -15,12 +15,9 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->foreignId('section_id')->constrained('sections');
-            $table->text('detail')->nullable();
             $table->string('title');
+            $table->foreignId('section_id')->constrained('sections');
             $table->string('percentage');
-            $table->string('status')->default('1');
             $table->timestamps();
         });
     }

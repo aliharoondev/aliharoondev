@@ -57,17 +57,23 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $path= '';
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        //     'section_id' => 'required',
+        // ]);
+        // $path= '';
         $service = new Service();
         $service->title = $request->title;
         $service->section_id = $request->section;
         $service->detail = $request->detail;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            // $filename = time() . '.' . $image->getClientOriginalExtension();
-            $path = $request->file('image')->store('service','public');
-        }  
-        $service->image = $path;   
+        $service->icon = $request->icon;
+
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     // $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $path = $request->file('image')->store('service','public');
+        // }  
+        // $service->image = $path;   
         $service->save();
         return  redirect()->route('services.index')->with('success','Service Added Successfully');
     }
@@ -89,9 +95,10 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        //
+        $sections = Section::select('id', 'title')->get();
+        return view('backend.content.services.edit',compact('sections','service'));
     }
 
     /**
@@ -103,7 +110,14 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $service = Service::find($id);
+        $service = new Service();
+        $service->title = $request->title;
+        $service->section_id = $request->section;
+        $service->detail = $request->detail;
+        $service->icon = $request->icon;
+        $service->save();
+        return  redirect()->route('services.index')->with('success','Service Update Successfully');
     }
 
     /**

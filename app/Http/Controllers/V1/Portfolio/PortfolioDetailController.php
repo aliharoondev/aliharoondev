@@ -26,7 +26,7 @@ class PortfolioDetailController extends Controller
             $portfolio_details = portfolioDetail::query();
             return DataTables::of($portfolio_details)
                 ->addColumn('action', function ($portfolio_detail) {
-                    $url = route('portfolios.edit',$portfolio_detail->id);
+                    $url = route('portfolio-details.edit',$portfolio_detail->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
                             ";
@@ -34,7 +34,7 @@ class PortfolioDetailController extends Controller
                 ->make(true);
         }
 
-        return view('backend.content.portfolios.index',['portfolio_details'=>$portfolio_details]);
+        return view('backend.content.portfolio-details.index',['portfolio_details'=>$portfolio_details]);
     }
 
     /**
@@ -67,20 +67,20 @@ class PortfolioDetailController extends Controller
          $portfolio->client = $request->client;
          $portfolio->project_date = $request->project_date;
          $portfolio->project_url = $request->project_url;
- 
+
          if ($request->hasFile('image')) {
              $image = $request->file('image');
              $filename = time() . '.' . $image->getClientOriginalExtension();
              $path = $request->file('image')->storePubliclyAs('portfolio_detail',$filename);
-             }  
-         $portfolio->image = $path;   
+             }
+         $portfolio->image = $path;
 
          if ($request->hasFile('image2')) {
             $image2 = $request->file('image2');
             $filename = time() . '.' . $image2->getClientOriginalExtension();
             $path = $request->file('image2')->storePubliclyAs('portfolio_detail',$filename);
-            }  
-        $portfolio->image2 = $path;   
+            }
+        $portfolio->image2 = $path;
          $portfolio->save();
          return  redirect()->route('portfolio-details.index')->with('success','Portfolio Added Successfully');
      }
@@ -102,9 +102,9 @@ class PortfolioDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(portfolioDetail $portfolio_detail)
     {
-        //
+        return view('backend.content.portfolio_details.edit',compact('portfolio_detail'));
     }
 
     /**
@@ -116,7 +116,33 @@ class PortfolioDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $portfolio_detail = Portfolio::find($id);
+
+        $path= '';
+        $portfolio_detail->title = $request->title;
+        $portfolio_detail->detail = $request->detail;
+        $portfolio_detail->portfolio_id = $request->portfolio;
+        $portfolio_detail->status = $request->status;
+        $portfolio_detail->category = $request->category;
+        $portfolio_detail->client = $request->client;
+        $portfolio_detail->project_date = $request->project_date;
+        $portfolio_detail->project_url = $request->project_url;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $request->file('image')->storePubliclyAs('portfolio_detail',$filename);
+            }
+        $portfolio_detail->image = $path;
+
+        if ($request->hasFile('image2')) {
+           $image2 = $request->file('image2');
+           $filename = time() . '.' . $image2->getClientOriginalExtension();
+           $path = $request->file('image2')->storePubliclyAs('portfolio_detail',$filename);
+           }
+       $portfolio_detail->image2 = $path;
+        $portfolio_detail->save();
+        return  redirect()->route('portfolio-details.index')->with('success','Portfolio Detail Update Successfully');
     }
 
     /**

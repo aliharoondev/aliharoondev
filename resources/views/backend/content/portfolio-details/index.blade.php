@@ -25,11 +25,11 @@
                             </button>
                         </div>
                     @endif
-                    <h4>List of all the Educations</h4>
+                    <h4>List of all the Portfolio Details</h4>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
-                                <table id="tblortfolioDetails"
+                                <table id="tblPortfolioDetails"
                                        class="table table-striped- table-bordered table-hover table-checkable">
                                     <thead>
                                     <tr>
@@ -37,7 +37,6 @@
                                         <th>Title</th>
                                         <th>detail</th>
                                         <th>Image</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -53,7 +52,7 @@
 @section('scripts')
     <script>
         $(document).ready(function () {
-            $('#tblortfolioDetails').DataTable({
+            $('#tblPortfolioDetails').DataTable({
                 processing:true,
                 serverSide:true,
                 ajax:"{{route('portfolio-details.index')}}",
@@ -62,7 +61,6 @@
                     {data:'title',name:'title'},
                     {data:'detail',name:'detail'},
                     {data:'image',name:'image'},
-                    {data:'status',name:'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

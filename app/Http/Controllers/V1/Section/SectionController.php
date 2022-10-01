@@ -54,6 +54,9 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        // ]);
         $section = new Section();
         $section->title = $request->title;
         $section->detail = $request->detail;  
@@ -79,9 +82,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Section $section)
     {
-        //
+        return view('backend.content.sections.edit',compact('section',));
     }
 
     /**
@@ -93,7 +96,13 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $section = Section::find($id);
+        $section = new Section();
+        $section->title = $request->title;
+        $section->detail = $request->detail;  
+        $section->status = $request->status;  
+        $section->save();
+        return  redirect()->route('sections.index')->with('success','Section Update Successfully');
     }
 
     /**

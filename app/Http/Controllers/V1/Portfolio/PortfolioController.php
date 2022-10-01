@@ -27,7 +27,7 @@ class PortfolioController extends Controller
             $portfolios = Portfolio::query();
             return DataTables::of($portfolios)
                 ->addColumn('action', function ($portfolio) {
-                    $url = route('portfolios.edit',$portfolio->id);
+                    $url = route('portfolio.edit',$portfolio->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
                             ";
@@ -57,6 +57,11 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        //     'section_id' => 'required',
+        //     'category' => 'required',
+        // ]);
        $path= '';
         $portfolio = new Portfolio();
         $portfolio->title = $request->title;
@@ -72,7 +77,7 @@ class PortfolioController extends Controller
         }  
         $portfolio->image = $path;   
         $portfolio->save();
-        return  redirect()->route('portfolios.index')->with('success','Portfolio Added Successfully');
+        return  redirect()->route('portfolio.index')->with('success','Portfolio Added Successfully');
     }
 
     /**
@@ -92,9 +97,10 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Portfolio $portfolio)
     {
-        //
+        $sections = Section::select('id', 'title')->get();
+        return view('backend.content.portfolios.edit',compact('sections','portfolio'));
     }
 
     /**
@@ -106,7 +112,23 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        $path= '';
+        $portfolio = new Portfolio();
+        $portfolio->title = $request->title;
+        $portfolio->section_id = $request->section;
+        $portfolio->detail = $request->detail;
+        $portfolio->category = $request->category;
+        $portfolio->status = $request->status;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            // $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $request->file('image')->store('portfolio','public');
+        }  
+        $portfolio->image = $path;   
+        $portfolio->save();
+        return  redirect()->route('portfolio.index')->with('success','Portfolio Added Successfully');
     }
 
     /**

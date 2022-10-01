@@ -45,7 +45,8 @@ class FactController extends Controller
     public function create()
     {
         $sections = Section::select('id', 'title')->get();
-        return view('backend.content.facts.create',compact('sections'));    }
+        return view('backend.content.facts.create',compact('sections')); 
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -55,18 +56,25 @@ class FactController extends Controller
      */
     public function store(Request $request)
     {
-        $path= '';
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        //     'section_id' => 'required',
+        //     'number' => 'required',
+        //     'icon' => 'required',
+        // ]);
+        // $path= '';
         $fact = new Fact();
         $fact->title = $request->title;
         $fact->section_id = $request->section;
         $fact->detail = $request->detail;
         $fact->number = $request->number;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            // $filename = time() . '.' . $image->getClientOriginalExtension();
-            $path = $request->file('image')->store('fact','public');
-        }  
-        $fact->image = $path;   
+        $fact->icon = $request->icon;
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     // $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $path = $request->file('image')->store('fact','public');
+        // }  
+        // $fact->image = $path;   
         $fact->save();
         return  redirect()->route('facts.index')->with('success','Fact Added Successfully');
     }
@@ -88,9 +96,10 @@ class FactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Fact $fact)
     {
-        //
+        $sections = Section::select('id', 'title')->get();
+        return view('backend.content.facts.edit',compact('sections','fact'));
     }
 
     /**
@@ -102,7 +111,14 @@ class FactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fact = Fact::find($id);
+        $fact->title = $request->title;
+        $fact->section_id = $request->section;
+        $fact->detail = $request->detail;
+        $fact->number = $request->number;
+        $fact->icon = $request->icon;
+        $fact->save();
+        return  redirect()->route('facts.index')->with('success','Fact Update Successfully');
     }
 
     /**

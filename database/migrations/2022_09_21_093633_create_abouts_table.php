@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('section_id')->constrained('sections');
             $table->string('short_discription');
-            $table->dateTime('birth_date');
+            $table->date('birth_date');
             $table->string('website_url')->default('N/A');
             $table->string('degree')->default('N/A');
             $table->string('phone')->default('N/A');

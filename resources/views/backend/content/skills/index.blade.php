@@ -34,10 +34,8 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Name</th>
                                         <th>Title</th>
                                         <th>Percentage</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -59,10 +57,8 @@
                 ajax:"{{route('skills.index')}}",
                 columns:[
                     {data:'id',name:'id'},
-                    {data:'name',name:'name'},
                     {data:'title',name:'title'},
                     {data:'percentage',name:'percentage'},
-                    {data:'status',name:'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

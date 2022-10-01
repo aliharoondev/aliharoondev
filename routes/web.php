@@ -12,15 +12,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('portfolio', function () {
-//     return view('frontend.content.pages.portfolio-details');
-// });
-
 Route::get('/', 'General\PagesController@landing')->name('landing');
-Route::get('portfolio-detail/{id}', 'General\PagesController@portfolio_detail')->name('portfolio-detail');
+
 Route::post('/contact', 'General\ContactController@store')->name('contact.store');
 
-// Route::get('/', [General\PagesController::class, 'landing'])->name('landing');
+ Route::get('/', 'General\PagesController@landing')->name('landing');
+ Route::get('portfolio-detail/{id}', 'General\PagesController@portfolio_detail')->name('portfolio-detail');
+
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -51,16 +49,18 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('{role}/permissions', 'V1\Roles\RolePermissionsController@rolePermissionsStore')->name('roles.permissions.store');
         });
         Route::resource('roles', 'V1\Roles\RoleController');
-        Route::resource('posts', 'V1\Posts\PostsController');
-        Route::resource('categories', 'V1\Categories\CategoryController');
 
         Route::resource('skills', 'V1\Skills\SkillController');
         Route::resource('facts', 'V1\Facts\FactController');
         Route::resource('services', 'V1\Services\ServiceController');
         Route::resource('sections', 'V1\Section\SectionController');
-        Route::resource('abouts', 'V1\About\AboutController');
-        Route::resource('educations', 'V1\Educations\EducationController');
-        Route::resource('portfolios', 'V1\Portfolio\PortfolioController');
+        Route::resource('about', 'V1\About\AboutController');
+        Route::resource('experience', 'V1\Experience\ExperienceController');
+        Route::resource('sociallink', 'V1\Social\SocialLinkController');
+        Route::resource('testimonial', 'V1\Testimonial\TestimonialContoller');
+        Route::resource('contact', 'V1\Contact\ContactController');
+        Route::resource('education', 'V1\Educations\EducationController');
+        Route::resource('portfolio', 'V1\Portfolio\PortfolioController');
         Route::resource('portfolio-details', 'V1\Portfolio\PortfolioDetailController');
     });
 });

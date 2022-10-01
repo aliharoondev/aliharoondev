@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('section_id')->constrained('sections');
-            $table->string('image')->nullable();
+            $table->string('icon')->nullable();
             $table->string('number')->default('100');
             $table->text('detail');
             $table->timestamps();

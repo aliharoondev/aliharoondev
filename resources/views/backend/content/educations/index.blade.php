@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="{{route('educations.create')}}" class="btn btn-info">Add New Education</a>
+                            <a href="{{route('education.create')}}" class="btn btn-info">Add New Education</a>
                         </div>
                     </div>
                     @if (session('success'))
@@ -38,7 +38,6 @@
                                         <th>degree</th>
                                         <th>Session</th>
                                         <th>institude</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -57,14 +56,13 @@
             $('#tblEducations').DataTable({
                 processing:true,
                 serverSide:true,
-                ajax:"{{route('educations.index')}}",
+                ajax:"{{route('education.index')}}",
                 columns:[
                     {data:'id',name:'id'},
                     {data:'title',name:'title'},
                     {data:'degree',name:'degree'},
                     {data:'session',name:'session'},
                     {data:'institude',name:'institude'},
-                    {data:'status',name:'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });
