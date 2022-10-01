@@ -10,6 +10,7 @@ use App\Models\Portfolio;
 use App\Models\portfolioDetail;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PortfolioDetailController extends Controller
 {

@@ -23,6 +23,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
+                                        <label class="form-control-label">Slug</label>
+                                        <input type="text" id="slug" name="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ $section->slug }}" placeholder="Slug"/>
+                                        @error('slug')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col form-group">
                                         <label class="form-control-label">Detail</label>
                                         <textarea type="text" id="detail" name="detail" class="form-control @error('detail') is-invalid @enderror"  placeholder="Detail">{{ $section->detail }}</textarea>
                                         @error('detail')
