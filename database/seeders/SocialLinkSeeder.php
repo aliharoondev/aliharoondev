@@ -36,10 +36,10 @@ class SocialLinkSeeder extends Seeder
             'icon'=>'bxl-skype',
             'link'=>'#'
         ]);
-        SocialLink::create([
-            'title'=>'linkedine',
-            'icon'=>'bxl-linkedine',
-            'link'=>'#'
-        ]);
+        // SocialLink::create([
+        //     'title'=>'linkedine',
+        //     'icon'=>'bxl-linkedine',
+        //     'link'=>'#'
+        // ]);
     }
 }

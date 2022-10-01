@@ -42,13 +42,13 @@ class ServiceSeeder extends Seeder
         Service::create([
             'title'=>'Digital Marketing',
             'section_id'=>'8',
-            'icon'=>'bi-hdd-laptop',
+            'icon'=>'bi-laptop',
             'detail'=>'We provide professional digital marketing services to give you the best digital exposure you deserve. We strongly believe that going digital is the way forward, for any business now, and we try to reflect our beliefs through dedication in our services.',
         ]);
         Service::create([
             'title'=>'Content Marketing',
             'section_id'=>'8',
-            'icon'=>'bi-hdd-chat-left-text',
+            'icon'=>'bi-chat-left-text',
             'detail'=>'We tailor a bespoke content marketing strategy for each of our clients. Our experienced copywriters know exactly how to make words sell',
         ]);
     }
