@@ -33,7 +33,6 @@ class StoreAboutRequest extends FormRequest
             'birth_date' => 'required',
             'website_url' => 'required',
             'degree' => 'required',
-            'website_url' => 'required',
             'freelance' => 'required',
             'image' => 'required',
         ];
