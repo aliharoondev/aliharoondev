@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\Skills;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StoreSkillRequest;
-use App\Http\Requests\V1\Categories\UpdateSkillRequest;
+use App\Http\Requests\V1\Skill\StoreSkillRequest;
+use App\Http\Requests\V1\Skill\UpdateSkillRequest;
 use App\Models\Skill;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
@@ -53,7 +53,7 @@ class SkillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSkillRequest $request)
     {
         // $validated = $request->validate([
         //     'title' => 'required',
@@ -97,7 +97,7 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSkillRequest $request, $id)
     {
         $skill = Skill::find($id);
         $skill = new Skill();

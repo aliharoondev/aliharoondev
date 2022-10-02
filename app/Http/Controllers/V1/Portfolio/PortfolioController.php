@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\Portfolio;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StorePortfolioRequest;
-use App\Http\Requests\V1\Categories\UpdatePortfolioRequest;
+use App\Http\Requests\V1\Portfolio\StorePortfolioRequest;
+use App\Http\Requests\V1\Portfolio\UpdatePortfolioRequest;
 use App\Models\Portfolio;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
@@ -55,7 +55,7 @@ class PortfolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePortfolioRequest $request)
     {
         // $validated = $request->validate([
         //     'title' => 'required',
@@ -109,7 +109,7 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePortfolioRequest $request, $id)
     {
         $portfolio = Portfolio::find($id);
         $path= '';

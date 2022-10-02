@@ -4,8 +4,9 @@ namespace App\Http\Controllers\V1\Portfolio;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StorePortfolioRequest;
-use App\Http\Requests\V1\Categories\UpdatePortfolioRequest;
+use App\Http\Requests\V1\Portfolio\StorePortfolioDetailRequest;
+use App\Http\Requests\V1\Portfolio\UpdatePortfolioDetailReques;
+use App\Http\Requests\V1\Portfolio\UpdatePortfolioDetailRequest;
 use App\Models\Portfolio;
 use App\Models\portfolioDetail;
 use Yajra\DataTables\Facades\DataTables;
@@ -56,7 +57,7 @@ class PortfolioDetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePortfolioDetailRequest $request)
     {
         $path= '';
 
@@ -117,7 +118,7 @@ class PortfolioDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePortfolioDetailRequest $request, $id)
     {
         $portfolio_detail = portfolioDetail::find($id);
 

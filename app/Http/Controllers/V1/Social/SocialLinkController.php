@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\Social;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StoreSocialLinkRequest;
-use App\Http\Requests\V1\Categories\UpdateSocialLinkRequest;
+use App\Http\Requests\V1\SocialLink\StoreSocialLinkRequest;
+use App\Http\Requests\V1\SocialLink\UpdateSocialLinkRequest;
 use App\Models\SocialLink;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
@@ -54,7 +54,7 @@ class SocialLinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSocialLinkRequest $request)
     {
         $validated = $request->validate([
             'title' => 'required',
@@ -98,7 +98,7 @@ class SocialLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSocialLinkRequest $request, $id)
     {
         $sociallink = SocialLink::find($id);
         $sociallink = new SocialLink();

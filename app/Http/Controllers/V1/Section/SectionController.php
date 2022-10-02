@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\Section;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StoreSectionRequest;
-use App\Http\Requests\V1\Categories\UpdateSectionRequest;
+use App\Http\Requests\V1\Section\StoreSectionRequest;
+use App\Http\Requests\V1\Section\UpdateSectionRequest;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
@@ -53,7 +53,7 @@ class SectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSectionRequest $request)
     {
         // $validated = $request->validate([
         //     'title' => 'required',
@@ -96,7 +96,7 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSectionRequest $request, $id)
     {
         $section = Section::find($id);
         $section->title = $request->title;

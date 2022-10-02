@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\Services;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StoreServiceRequest;
-use App\Http\Requests\V1\Categories\UpdateServiceRequest;
+use App\Http\Requests\V1\Service\StoreServiceRequest;
+use App\Http\Requests\V1\Service\UpdateServiceRequest;
 use App\Models\Service;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
@@ -55,7 +55,7 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
         // $validated = $request->validate([
         //     'title' => 'required',
@@ -108,7 +108,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateServiceRequest $request, $id)
     {
         $service = Service::find($id);
         $service = new Service();

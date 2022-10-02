@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\Facts;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StoreFactRequest;
-use App\Http\Requests\V1\Categories\UpdateFactRequest;
+use App\Http\Requests\V1\Fact\StoreFactRequest;
+use App\Http\Requests\V1\Fact\UpdateFactRequest;
 use App\Models\Fact;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
@@ -54,7 +54,7 @@ class FactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFactRequest $request)
     {
         // $validated = $request->validate([
         //     'title' => 'required',
@@ -109,7 +109,7 @@ class FactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateFactRequest $request, $id)
     {
         $fact = Fact::find($id);
         $fact->title = $request->title;

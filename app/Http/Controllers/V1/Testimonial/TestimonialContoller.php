@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\Testimonial;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\Categories\StoreTestimonialRequest;
-use App\Http\Requests\V1\Categories\UpdateTestimonialRequest;
+use App\Http\Requests\V1\Testimonial\StoreTestimonialRequest;
+use App\Http\Requests\V1\Testimonial\UpdateTestimonialRequest;
 use App\Models\Testimonial;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
@@ -54,7 +54,7 @@ class TestimonialContoller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTestimonialRequest $request)
     {
         // $validated = $request->validate([
         //     'name' => 'required',
@@ -106,7 +106,7 @@ class TestimonialContoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTestimonialRequest $request, $id)
     {
         $testimonial = Testimonial::find($id);
         $path= '';
