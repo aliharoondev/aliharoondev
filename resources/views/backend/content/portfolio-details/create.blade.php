@@ -29,7 +29,7 @@
                                                     <option value="{!! $port->id !!}">{!! $port->title !!}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                </div>
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Detail</label>

@@ -20,7 +20,7 @@ class PortfolioController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         $portfolios = [];
 
         if($request->ajax() ==true) {
@@ -46,7 +46,7 @@ class PortfolioController extends Controller
     public function create()
     {
         $sections = Section::select('id', 'title')->get();
-        return view('backend.content.portfolios.create',compact('sections'));   
+        return view('backend.content.portfolios.create',compact('sections'));
      }
 
     /**
@@ -72,10 +72,9 @@ class PortfolioController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            // $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $request->file('image')->store('portfolio','public');
-        }  
-        $portfolio->image = $path;   
+        }
+        $portfolio->image = $path;
         $portfolio->save();
         return  redirect()->route('portfolio.index')->with('success','Portfolio Added Successfully');
     }
@@ -125,8 +124,8 @@ class PortfolioController extends Controller
             $image = $request->file('image');
             // $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $request->file('image')->store('portfolio','public');
-        }  
-        $portfolio->image = $path;   
+        }
+        $portfolio->image = $path;
         $portfolio->save();
         return  redirect()->route('portfolio.index')->with('success','Portfolio Added Successfully');
     }
