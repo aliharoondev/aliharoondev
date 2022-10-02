@@ -59,6 +59,7 @@ class PortfolioDetailController extends Controller
     public function store(Request $request)
     {
         $path= '';
+
          $portfolio = new portfolioDetail();
          $portfolio->title = $request->title;
          $portfolio->detail = $request->detail;
@@ -69,18 +70,18 @@ class PortfolioDetailController extends Controller
          $portfolio->project_date = $request->project_date;
          $portfolio->project_url = $request->project_url;
 
-         if ($request->hasFile('image')) {
-             $image = $request->file('image');
-             $filename = time() . '.' . $image->getClientOriginalExtension();
-             $path = $request->file('image')->storePubliclyAs('portfolio_detail',$filename);
-             }
-         $portfolio->image = $path;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $request->file('image')->store('portfolio_detail','public');
+        }
 
-         if ($request->hasFile('image2')) {
+        $portfolio->image = $path;
+
+        if ($request->hasFile('image2')) {
             $image2 = $request->file('image2');
-            $filename = time() . '.' . $image2->getClientOriginalExtension();
-            $path = $request->file('image2')->storePubliclyAs('portfolio_detail',$filename);
-            }
+            $path = $request->file('image2')->store('portfolio_detail','public');
+        }
+
         $portfolio->image2 = $path;
          $portfolio->save();
          return  redirect()->route('portfolio-details.index')->with('success','Portfolio Added Successfully');
@@ -103,9 +104,10 @@ class PortfolioDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(portfolioDetail $portfolio_detail)
+    public function edit(portfolioDetail $portfolioDetail)
     {
-        return view('backend.content.portfolio_details.edit',compact('portfolio_detail'));
+        $portfolio = Portfolio::select('id','title')->get();
+        return view('backend.content.portfolio-details.edit',compact('portfolioDetail','portfolio'));
     }
 
     /**
@@ -117,7 +119,7 @@ class PortfolioDetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $portfolio_detail = Portfolio::find($id);
+        $portfolio_detail = portfolioDetail::find($id);
 
         $path= '';
         $portfolio_detail->title = $request->title;
