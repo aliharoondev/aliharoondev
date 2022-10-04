@@ -5,7 +5,7 @@
     <div class="row ">
         <div class="col">
             <div class="card">
-                <div class="card-header">Skills</div>
+                <div class="card-header">About</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
