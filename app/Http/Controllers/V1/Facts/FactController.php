@@ -29,6 +29,7 @@ class FactController extends Controller
                     $url = route('facts.edit',$fact->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
+                            <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deleteFact' data-id='$fact->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
                 ->make(true);
@@ -127,8 +128,9 @@ class FactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Fact $fact)
     {
-        //
+        $fact->delete();
+        return  redirect()->route('facts.index')->with('success','Fact Deleted Successfully');
     }
 }

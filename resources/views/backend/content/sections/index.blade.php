@@ -36,6 +36,7 @@
                                         <th>Id</th>
                                         <th>Title</th>
                                         <th>detail</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,12 @@
             </div>
         </div>
     </div>
+    {{--End Test--}}
+    {{-- Delete Form Starts --}}
+    {!! Form::open(['method' => 'delete', 'id' => 'deleteForm']) !!}
+    {!! Form::hidden('id', null , ['id' => 'deleteId']) !!}
+    {!! Form::close() !!}
+    {{-- Delete Form Ends --}}
 @stop
 @section('scripts')
     <script>
@@ -59,9 +66,64 @@
                     {data:'id',name:'id'},
                     {data:'title',name:'title'},
                     {data:'detail',name:'detail'},
+                    {data:'status',name:'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });
         });
+        
+        function changeStatus(id,status) {
+            var result = window.confirm('Are you sure you want to change status ?');
+            if (result == false) {
+                e.preventDefault();
+            }else{
+
+                $.ajax({
+                    method: "POST",
+                    url: "{{ route('section.status') }}",
+                    section: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        'id': id,
+                        'status': status
+                    },
+                    success: function (response) {
+                        if(response.status)
+                        {
+                            Swal.fire({
+                                position: 'center',
+                                showConfirmButton: false,
+                                timer: 2000,
+                                icon: 'success',
+                                title: response.message,
+                            });
+                            $('#sections').DataTable().ajax.reload();
+                        }
+                    }
+                });
+                $(document).on('click', '.deleteSection', function () {
+                        var currentID = $(this).attr('data-id');
+                        console.log('id',currentID);
+                        swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then(function (result) {
+                            if (result.value) {
+                                var delete_url = "{{route('sections.destroy', ':id')}}";
+                                delete_url = delete_url.replace(':id', currentID);
+                                $('#deleteForm').attr('action', delete_url);
+                                $('#deleteForm')[0].submit();
+                                swal.fire(
+                                    'Deleted!',
+                                    'Section has been deleted.',
+                                    'success'
+                                )
+                            }
+                        }, currentID);
+            });
+            }
+        };
     </script>
 @stop

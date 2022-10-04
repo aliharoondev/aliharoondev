@@ -29,6 +29,7 @@ class ExperienceController extends Controller
                     $url = route('experience.edit',$experience->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
+                            <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deleteExperience' data-id='$experience->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
                 ->make(true);
@@ -136,8 +137,9 @@ class ExperienceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Experience $experience)
     {
-        //
+        $experience->delete();
+        return  redirect()->route('experience.index')->with('success','Experience Deleted Successfully');
     }
 }

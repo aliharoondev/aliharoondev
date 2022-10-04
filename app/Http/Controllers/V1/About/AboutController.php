@@ -25,15 +25,18 @@ class AboutController extends Controller
         if($request->ajax() ==true) {
             $about = About::query();
             return DataTables::of($about)
+                ->addColumn('image', function ($about) { 
+                    $url= asset('storage/'.$about->image);
+                    return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
+                })
                 ->addColumn('action', function ($about) {
                     $url = route('about.edit',$about->id);
-                    $delete_url = route('about.destroy',$about->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
-                            <a href='$delete_url' class='btn btn-xs btn-danger ' ><i class='glyphicon glyphicon-delete'></i> Delete</a>
+                            <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deleteAbout' data-id='$about->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
-                ->make(true);
+                ->rawColumns(['image', 'action'])->make(true);
         }
 
         return view('backend.content.abouts.index',['about'=>$about]);

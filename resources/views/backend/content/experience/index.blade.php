@@ -50,6 +50,12 @@
             </div>
         </div>
     </div>
+    {{--End Test--}}
+    {{-- Delete Form Starts --}}
+    {!! Form::open(['method' => 'delete', 'id' => 'deleteForm']) !!}
+    {!! Form::hidden('id', null , ['id' => 'deleteId']) !!}
+    {!! Form::close() !!}
+    {{-- Delete Form Ends --}}
 @stop
 @section('scripts')
     <script>
@@ -67,6 +73,29 @@
                     {data:'job_type',name:'job_type'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
+            });
+            $(document).on('click', '.deleteExperience', function () {
+                        var currentID = $(this).attr('data-id');
+                        console.log('id',currentID);
+                        swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then(function (result) {
+                            if (result.value) {
+                                var delete_url = "{{route('experience.destroy', ':id')}}";
+                                delete_url = delete_url.replace(':id', currentID);
+                                $('#deleteForm').attr('action', delete_url);
+                                $('#deleteForm')[0].submit();
+                                swal.fire(
+                                    'Deleted!',
+                                    'Experience has been deleted.',
+                                    'success'
+                                )
+                            }
+                        }, currentID);
             });
         });
     </script>

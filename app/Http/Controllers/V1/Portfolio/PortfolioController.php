@@ -26,13 +26,18 @@ class PortfolioController extends Controller
         if($request->ajax() ==true) {
             $portfolios = Portfolio::query();
             return DataTables::of($portfolios)
+            ->addColumn('image', function ($portfolio) { 
+                $url= asset('storage/'.$portfolio->image);
+                return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
+            })
                 ->addColumn('action', function ($portfolio) {
                     $url = route('portfolio.edit',$portfolio->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
+                            <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deletePortfolio' data-id='$portfolio->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
-                ->make(true);
+                ->rawColumns(['image', 'action'])->make(true);
         }
 
         return view('backend.content.portfolios.index',['portfolios'=>$portfolios]);
@@ -136,8 +141,9 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Portfolio $portfolio)
     {
-        //
+        $portfolio->delete();
+        return  redirect()->route('portfolio.index')->with('success','Portfolio Deleted Successfully');
     }
 }

@@ -5,6 +5,7 @@
 
     <!--end::Base Path -->
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techentertain</title>
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">    <!--begin::Fonts -->

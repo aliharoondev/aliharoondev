@@ -28,6 +28,7 @@ class EducationController extends Controller
                     $url = route('education.edit',$education->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
+                            <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deleteEducation' data-id='$education->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
                 ->make(true);
@@ -125,8 +126,9 @@ class EducationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Education $education)
     {
-        //
+        $education->delete();
+        return  redirect()->route('education.index')->with('success','Education Deleted Successfully');
     }
 }
