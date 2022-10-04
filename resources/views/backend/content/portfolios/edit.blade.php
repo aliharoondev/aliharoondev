@@ -47,6 +47,11 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="col-md-3">
+                                            @if($portfolio->id == $portfolio->id)
+                                                <img src="{{ url('storage/' . $portfolio->image) }}" id="profile-img-tag" height="100" width="100">
+                                            @endif
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">

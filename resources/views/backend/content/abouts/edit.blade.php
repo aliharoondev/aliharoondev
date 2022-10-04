@@ -119,6 +119,11 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="col-md-3">
+                                            @if($about->id == $about->id)
+                                                <img src="{{ url('storage/' . $about->image) }}" id="profile-img-tag" height="100" width="100">
+                                            @endif
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col text-right">
