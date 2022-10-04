@@ -1,7 +1,7 @@
 
 <!-- Assets scripts -->
-<link rel="stylesheet" href="{{URL::asset('backend/assets/css/admin.min.css')}}">
-<link rel="stylesheet" href="{{URL::asset('backend/assets/css/admin.css')}}">
+<link rel="stylesheet" href="{{URL::asset('backend/css/admin.min.css')}}">
+<link rel="stylesheet" href="{{URL::asset('backend/css/admin.css')}}">
 <link href="{{URL::asset('backend/theme/vendors/general/sweetalert2/dist/sweetalert2.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{URL::asset('backend/theme/vendors/general/sweetalert2/dist/sweetalert2.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{URL::asset('backend/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />

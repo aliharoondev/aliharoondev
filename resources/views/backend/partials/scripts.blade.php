@@ -23,9 +23,9 @@
 
 
 <!-- assets Scripts -->
-    <script src="{{URL::asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{URL::asset('backend/assets/js/jquery.min.js')}}"></script>
-    <script src="{{URL::asset('backend/assets/js/at-scripts.js')}}"></script>
+    <script src="{{URL::asset('backend/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{URL::asset('backend/js/jquery.min.js')}}"></script>
+    <script src="{{URL::asset('backend/js/at-scripts.js')}}"></script>
     <script src="{{URL::asset('backend/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
     <script src="{{URL::asset('backend/theme/vendors/general/sweetalert2/dist/sweetalert2.min.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/theme/vendors/custom/js/vendors/sweetalert2.init.js')}}" type="text/javascript"></script>
