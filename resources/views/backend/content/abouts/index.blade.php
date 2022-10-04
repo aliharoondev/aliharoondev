@@ -37,6 +37,7 @@
                                         <th>Title</th>
                                         <th>Phone</th>
                                         <th>Address</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -48,6 +49,12 @@
             </div>
         </div>
     </div>
+    {{--End Test--}}
+    {{-- Delete Form Starts --}}
+    {!! Form::open(['method' => 'delete', 'id' => 'deleteForm']) !!}
+    {!! Form::hidden('id', null , ['id' => 'deleteId']) !!}
+    {!! Form::close() !!}
+    {{-- Delete Form Ends --}}
 @stop
 @section('scripts')
     <script>
@@ -61,8 +68,32 @@
                     {data:'title',name:'title'},
                     {data:'phone',name:'phone'},
                     {data:'address',name:'address'},
+                    {data:'image',name:'image'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
+            });
+            $(document).on('click', '.deleteAbout', function () {
+                        var currentID = $(this).attr('data-id');
+                        console.log('id',currentID);
+                        swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then(function (result) {
+                            if (result.value) {
+                                var delete_url = "{{route('about.destroy', ':id')}}";
+                                delete_url = delete_url.replace(':id', currentID);
+                                $('#deleteForm').attr('action', delete_url);
+                                $('#deleteForm')[0].submit();
+                                swal.fire(
+                                    'Deleted!',
+                                    'About has been deleted.',
+                                    'success'
+                                )
+                            }
+                        }, currentID);
             });
         });
     </script>

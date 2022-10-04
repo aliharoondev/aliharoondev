@@ -28,6 +28,7 @@ class SkillController extends Controller
                     $url = route('skills.edit',$skill->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
+                            <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deleteSkill' data-id='$skill->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
                 ->make(true);
@@ -114,8 +115,9 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Skill $skill)
     {
-        //
+        $skill->delete();
+        return  redirect()->route('skills.index')->with('success','Skill Deleted Successfully');
     }
 }

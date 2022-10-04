@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('facts', 'V1\Facts\FactController');
         Route::resource('services', 'V1\Services\ServiceController');
         Route::resource('sections', 'V1\Section\SectionController');
+        Route::post('status', 'V1\Section\SectionController@status')->name('section.status');
         Route::resource('about', 'V1\About\AboutController');
         Route::resource('experience', 'V1\Experience\ExperienceController');
         Route::resource('sociallink', 'V1\Social\SocialLinkController');

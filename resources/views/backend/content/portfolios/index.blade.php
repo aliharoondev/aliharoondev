@@ -49,6 +49,12 @@
             </div>
         </div>
     </div>
+    {{--End Test--}}
+    {{-- Delete Form Starts --}}
+    {!! Form::open(['method' => 'delete', 'id' => 'deleteForm']) !!}
+    {!! Form::hidden('id', null , ['id' => 'deleteId']) !!}
+    {!! Form::close() !!}
+    {{-- Delete Form Ends --}}
 @stop
 @section('scripts')
     <script>
@@ -61,10 +67,33 @@
                     {data:'id',name:'id'},
                     {data:'title',name:'title'},
                     {data:'detail',name:'detail'},
-                    {data:'image',name:'image'},
+                    { data: 'image', name: 'image', sortable: false, searchable: false },
                     {data:'category',name:'category'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
+            });
+            $(document).on('click', '.deletePortfolio', function () {
+                        var currentID = $(this).attr('data-id');
+                        console.log('id',currentID);
+                        swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then(function (result) {
+                            if (result.value) {
+                                var delete_url = "{{route('portfolio.destroy', ':id')}}";
+                                delete_url = delete_url.replace(':id', currentID);
+                                $('#deleteForm').attr('action', delete_url);
+                                $('#deleteForm')[0].submit();
+                                swal.fire(
+                                    'Deleted!',
+                                    'Portfolio has been deleted.',
+                                    'success'
+                                )
+                            }
+                        }, currentID);
             });
         });
     </script>

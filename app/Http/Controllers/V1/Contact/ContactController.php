@@ -29,10 +29,10 @@ class ContactController extends Controller
             return DataTables::of($contact)
                 ->addColumn('action', function ($contact) {
                     $url = route('contact.edit',$contact->id);
-                    $delete_url = route('contact.destroy',$contact->id);
+                    // $delete_url = route('contact.destroy',$contact->id);
                     return "
                             <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
-                            <a href='$delete_url' class='btn btn-xs btn-danger'><i class='glyphicon glyphicon-delete'></i> Delete</a>
+                            <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deleteContact' data-id='$contact->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
                 ->make(true);
@@ -127,12 +127,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ContactUs $contact)
     {
-        $contact = ContactUs::find($id);
         $contact->delete();
-
-        Session::flash("success", "Contact Deleted Successfully!");
-        return redirect()->back();
+        return  redirect()->route('contact.index')->with('success','Contact Deleted Successfully');
     }
 }

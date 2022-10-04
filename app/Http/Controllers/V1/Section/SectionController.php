@@ -25,13 +25,23 @@ class SectionController extends Controller
         if($request->ajax() ==true) {
             $sections = Section::query();
             return DataTables::of($sections)
-                ->addColumn('action', function ($section) {
-                    $url = route('sections.edit',$section->id);
-                    return "
-                            <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
-                            ";
-                })
-                ->make(true);
+            
+            ->addColumn('action', function(Section $section){
+                $btn = '<a href="'.route('sections.edit', $section->id) .'" class="btn btn-xs btn-primary"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>';
+                return $btn;
+            }) 
+            ->addColumn('status', function($section){
+
+                if($section->status == 'inactive'){
+                    $status = '<a onclick="changeStatus('.$section->id.',0)" href="javascript:void(0)" class="btn btn-xs btn-danger">Deactivate</a>';
+                }
+                else{
+                    $status = '<a onclick="changeStatus('.$section->id.',1)" href="javascript:void(0)" class="btn btn-xs btn-success">Activate</a>';
+                }
+                return $status;
+            })
+               
+                ->rawColumns(['status', 'action'])->make(true);
         }
 
         return view('backend.content.sections.index',['sections'=>$sections]);
@@ -113,8 +123,16 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Section $section)
     {
-        //
+        $section->delete();
+        return  redirect()->route('sections.index')->with('success','Section Deleted Successfully');
+    }
+    public function status(Request $request)
+    {
+        $section = Section::find($request->section_id);
+        $section->status = $request->status;
+        $section->save();
+        return response()->json(['status'=>'active','message'=>'Status Changed Successfully']);
     }
 }
