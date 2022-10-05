@@ -21,7 +21,6 @@ class SectionController extends Controller
     public function index(Request $request)
     {
         $sections = [];
-
         if($request->ajax() ==true) {
             $sections = Section::query();
             return DataTables::of($sections)
