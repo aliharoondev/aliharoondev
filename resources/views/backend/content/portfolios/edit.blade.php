@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <form action="{{route('portfolio.update',$portfolio->id)}}" method="post" eenctype="multipart/form-data">
+                            <form action="{{route('portfolio.update',$portfolio->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="row">
@@ -42,7 +42,7 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Image</label>
-                                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ $portfolio->image }}" placeholder="Image"/>
+                                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" value="{{old('image')}}" placeholder="Image"/>
                                         @error('image')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

@@ -37,6 +37,7 @@
                                         <th>Title</th>
                                         <th>detail</th>
                                         <th>Image</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -67,6 +68,7 @@
                     {data:'title',name:'title'},
                     {data:'detail',name:'detail'},
                     {data:'image',name:'image'},
+                    {data:'image2',name:'image2'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

@@ -25,11 +25,13 @@ class SectionController extends Controller
         if($request->ajax() ==true) {
             $sections = Section::query();
             return DataTables::of($sections)
-            
-            ->addColumn('action', function(Section $section){
-                $btn = '<a href="'.route('sections.edit', $section->id) .'" class="btn btn-xs btn-primary"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>';
-                return $btn;
-            }) 
+            ->addColumn('action', function ($section) {
+                $url = route('sections.edit',$section->id);
+                return "
+                        <a href='$url' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>
+                        <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deleteSection' data-id='$section->id'><i class='glyphicon glyphicon-delete'>Delete</a>
+                        ";
+            })
             ->addColumn('status', function($section){
 
                 if($section->status == 'inactive'){

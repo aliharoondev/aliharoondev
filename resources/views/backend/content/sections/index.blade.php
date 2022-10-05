@@ -71,7 +71,29 @@
                 ]
             });
         });
-        
+        $(document).on('click', '.deleteSection', function () {
+                        var currentID = $(this).attr('data-id');
+                        console.log('id',currentID);
+                        swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then(function (result) {
+                            if (result.value) {
+                                var delete_url = "{{route('sections.destroy', ':id')}}";
+                                delete_url = delete_url.replace(':id', currentID);
+                                $('#deleteForm').attr('action', delete_url);
+                                $('#deleteForm')[0].submit();
+                                swal.fire(
+                                    'Deleted!',
+                                    'Section has been deleted.',
+                                    'success'
+                                )
+                            }
+                        }, currentID);
+            });
         function changeStatus(id,status) {
             var result = window.confirm('Are you sure you want to change status ?');
             if (result == false) {
@@ -100,29 +122,6 @@
                         }
                     }
                 });
-                $(document).on('click', '.deleteSection', function () {
-                        var currentID = $(this).attr('data-id');
-                        console.log('id',currentID);
-                        swal.fire({
-                            title: 'Are you sure?',
-                            text: "You won't be able to revert this!",
-                            type: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: 'Yes, delete it!'
-                        }).then(function (result) {
-                            if (result.value) {
-                                var delete_url = "{{route('sections.destroy', ':id')}}";
-                                delete_url = delete_url.replace(':id', currentID);
-                                $('#deleteForm').attr('action', delete_url);
-                                $('#deleteForm')[0].submit();
-                                swal.fire(
-                                    'Deleted!',
-                                    'Section has been deleted.',
-                                    'success'
-                                )
-                            }
-                        }, currentID);
-            });
             }
         };
     </script>

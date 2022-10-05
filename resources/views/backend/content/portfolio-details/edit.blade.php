@@ -46,6 +46,11 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="col-md-3">
+                                            @if($portfolioDetail->id == $portfolioDetail->id)
+                                                <img src="{{ url('storage/' . $portfolioDetail->image) }}" id="profile-img-tag" height="100" width="100">
+                                            @endif
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
@@ -54,6 +59,11 @@
                                         @error('image2')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                    <div class="col-md-3">
+                                            @if($portfolioDetail->id == $portfolioDetail->id)
+                                                <img src="{{ url('storage/' . $portfolioDetail->image2) }}" id="profile-img-tag" height="100" width="100">
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="row">

@@ -31,6 +31,10 @@ class PortfolioDetailController extends Controller
                 $url= asset('storage/'.$portfolio_detail->image);
                 return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
             })
+            ->addColumn('image2', function ($portfolio_detail) { 
+                $url= asset('storage/'.$portfolio_detail->image2);
+                return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
+            })
                 ->addColumn('action', function ($portfolio_detail) {
                     $url = route('portfolio-details.edit',$portfolio_detail->id);
                     return "
@@ -38,7 +42,7 @@ class PortfolioDetailController extends Controller
                             <a href='javascript:void(0);' class='btn btn-xs btn-danger mb-0 deletePortfolioDetail' data-id='$portfolio_detail->id'><i class='glyphicon glyphicon-delete'>Delete</a>
                             ";
                 })
-                ->rawColumns(['image', 'action'])->make(true);
+                ->rawColumns(['image', 'action','image2'])->make(true);
         }
 
         return view('backend.content.portfolio-details.index',['portfolio_details'=>$portfolio_details]);
@@ -128,31 +132,32 @@ class PortfolioDetailController extends Controller
         $portfolio_detail = portfolioDetail::find($id);
 
         $path= '';
-        $path_image2= '';
-        $portfolio_detail->title = $request->title;
-        $portfolio_detail->detail = $request->detail;
-        $portfolio_detail->portfolio_id = $request->portfolio;
-        $portfolio_detail->status = $request->status;
-        $portfolio_detail->category = $request->category;
-        $portfolio_detail->client = $request->client;
-        $portfolio_detail->project_date = $request->project_date;
-        $portfolio_detail->project_url = $request->project_url;
+        $path_image2='';
+         $portfolio_detail->title = $request->title;
+         $portfolio_detail->detail = $request->detail;
+         $portfolio_detail->portfolio_id = $request->portfolio;
+         $portfolio_detail->status = $request->status;
+         $portfolio_detail->category = $request->category;
+         $portfolio_detail->client = $request->client;
+         $portfolio_detail->project_date = $request->project_date;
+         $portfolio_detail->project_url = $request->project_url;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $request->file('image')->store('portfolio_detail','public');
         }
+
         $portfolio_detail->image = $path;
 
         if ($request->hasFile('image2')) {
-            $image = $request->file('image2');
+            $image2 = $request->file('image2');
             $$path_image2 = $request->file('image2')->store('portfolio_detail','public');
         }
-        $portfolio_detail->image = $$path_image2;
-       $portfolio_detail->save();
-       return  redirect()->route('portfolio-details.index')->with('success','Portfolio Detail Update Successfully');
-    }
 
+        $portfolio_detail->image2 = $$path_image2;
+         $portfolio_detail->save();
+         return  redirect()->route('portfolio-details.index')->with('success','Portfolio Detail Update Successfully');
+     }
     /**
      * Remove the specified resource from storage.
      *
