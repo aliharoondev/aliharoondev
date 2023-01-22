@@ -18,7 +18,7 @@ class SkillController extends Controller
      */
     public function index(Request $request)
     {
-    
+
         $skills = [];
 
         if($request->ajax() ==true) {
@@ -101,7 +101,6 @@ class SkillController extends Controller
     public function update(UpdateSkillRequest $request, $id)
     {
         $skill = Skill::find($id);
-        $skill = new Skill();
         $skill->title = $request->title;
         $skill->section_id = $request->section;
         $skill->percentage = $request->percentage;
