@@ -18,7 +18,6 @@ class SkillController extends Controller
      */
     public function index(Request $request)
     {
-
         $skills = [];
 
         if($request->ajax() ==true) {
@@ -56,10 +55,6 @@ class SkillController extends Controller
      */
     public function store(StoreSkillRequest $request)
     {
-        // $validated = $request->validate([
-        //     'title' => 'required',
-        //     'section_id' => 'required',
-        // ]);
         $skill = new Skill();
         $skill->title = $request->title;
         $skill->section_id = $request->section;
@@ -117,6 +112,6 @@ class SkillController extends Controller
     public function destroy(Skill $skill)
     {
         $skill->delete();
-        return  redirect()->route('skills.index')->with('success','Skill Deleted Successfully');
+        return redirect()->route('skills.index')->with('success','Skill Deleted Successfully');
     }
 }
