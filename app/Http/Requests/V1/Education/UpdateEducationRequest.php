@@ -27,8 +27,8 @@ class UpdateEducationRequest extends FormRequest
             'title' => 'required',
             'section' => 'required',
             'degree' => 'required',
-            'session' => 'required',
-            'institude' => 'required',
+            'batch' => 'required',
+            'institute' => 'required',
             'detail' => 'required',
         ];
     }

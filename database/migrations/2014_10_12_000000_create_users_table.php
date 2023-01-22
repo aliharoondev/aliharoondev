@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('title')->nullable();
             $table->string('image')->nullable();
-            $table->string('sumary')->nullable();
+            $table->string('summary')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->unique();
@@ -34,25 +34,13 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('deleted_by')->nullable();
         });
         User::create([
-            'name' => 'superadmin',
-            'title' => 'Frelancer',
+            'name' => 'Ali Haroon',
+            'title' => 'Software Engineer',
             'image' => 'user/user1.jpg',
-            'sumary' => 'Super Admin Sumary Sumary',
+            'summary' => 'Summary of Super Admin',
             'address' => 'Lahore',
-            'phone' => '+92 123456789',
-            'email' => 'superadmin@exprsol.com',
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-        ]);
-        User::create([
-            'name' => 'User',
-            'title' => 'Web Developer',
-            'image' => 'user/user2.jpg',
-            'sumary' => 'User Sumary',
-            'address' => 'Lahore',
-            'phone' => '+92 123456789',
-            'email' => 'user@exprsol.com',
+            'phone' => '+92 345 4647216',
+            'email' => 'me@aliharoon.dev',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

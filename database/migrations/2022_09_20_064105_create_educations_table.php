@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('section_id')->constrained('sections');
             $table->string('degree');
             $table->string('session');
-            $table->text('institude');
+            $table->text('institute');
             $table->text('detail');
             $table->string('status')->default('active');
             $table->timestamps();

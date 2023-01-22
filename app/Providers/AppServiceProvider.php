@@ -27,9 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $socialLinks = SocialLink::all();
-        View::share('socialLinks', $socialLinks);    
-        
-        $users = User::where('id',2)->first();
-        View::share('users', $users);    
+        View::share('socialLinks', $socialLinks ?? null);
+
+        $users = User::where('id',1)->first();
+        View::share('users', $users);
     }
 }

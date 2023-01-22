@@ -13,11 +13,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'General\PagesController@landing')->name('landing');
-
 Route::post('/contact', 'General\ContactController@store')->name('contact.store');
-
- Route::get('/', 'General\PagesController@landing')->name('landing');
- Route::get('portfolio-detail/{id}', 'General\PagesController@portfolio_detail')->name('portfolio-detail');
+Route::get('portfolio-detail/{id}', 'General\PagesController@portfolio_detail')->name('portfolio-detail');
 
 
 // Authentication Routes...

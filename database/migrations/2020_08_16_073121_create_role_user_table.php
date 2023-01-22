@@ -50,10 +50,6 @@ class CreateRoleUserTable extends Migration
         $user1 = User::find(1);
 
         $user1->roles()->attach(1);
-
-        $user2 = User::find(2);
-
-        $user2->roles()->attach(2);
     }
 
     /**

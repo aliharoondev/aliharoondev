@@ -10,8 +10,8 @@ class About extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = 'abouts';
-    // protected $fillable = ['title','section' ,'phone' ,'email','address','short_discription','birth_date','website_url','detail','freelance'];
-    
+    // protected $fillable = ['title','section' ,'phone' ,'email','address','short_description','birth_date','website_url','detail','freelance'];
+
     public function section()
     {
         return $this->belongsTo(Section::class);

@@ -25,7 +25,7 @@ class AboutController extends Controller
         if($request->ajax() ==true) {
             $about = About::query();
             return DataTables::of($about)
-                ->addColumn('image', function ($about) { 
+                ->addColumn('image', function ($about) {
                     $url= asset('storage/'.$about->image);
                     return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
                 })
@@ -66,7 +66,7 @@ class AboutController extends Controller
         $about = new About();
         $about->title = $request->title;
         $about->section_id = $request->section;
-        $about->short_discription = $request->short_discription;
+        $about->short_description = $request->short_description;
         $about->birth_date = $request->birth_date;
         $about->website_url = $request->website_url;
         $about->degree = $request->degree;
@@ -78,8 +78,8 @@ class AboutController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $request->file('image')->store('about','public');
-        }  
-        $about->image = $path;   
+        }
+        $about->image = $path;
         $about->save();
         return  redirect()->route('about.index')->with('success','About Added Successfully');
     }
@@ -120,7 +120,7 @@ class AboutController extends Controller
         $path= '';
         $about->title = $request->title;
         $about->section_id = $request->section;
-        $about->short_discription = $request->short_discription;
+        $about->short_description = $request->short_description;
         $about->birth_date = $request->birth_date;
         $about->website_url = $request->website_url;
         $about->degree = $request->degree;
@@ -132,8 +132,8 @@ class AboutController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $request->file('image')->store('about','public');
-        }  
-        $about->image = $path;   
+        }
+        $about->image = $path;
         $about->save();
         return  redirect()->route('about.index')->with('success','About Update Successfully');
     }

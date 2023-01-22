@@ -33,8 +33,8 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Short Description</label>
-                                        <input type="text" id="short_discription" name="short_discription" class="form-control @error('short_discription') is-invalid @enderror" value="{{ $about->short_discription }}" placeholder="Short Description"/>
-                                        @error('short_discription')
+                                        <input type="text" id="short_description" name="short_description" class="form-control @error('short_description') is-invalid @enderror" value="{{ $about->short_description }}" placeholder="Short Description"/>
+                                        @error('short_description')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

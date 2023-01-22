@@ -6,13 +6,8 @@
         <h1 class="text-light"><a href="{{route('landing')}}">{{$users->name}}</a></h1>
         <div class="social-links mt-3 text-center">
         @foreach($socialLinks as $socialLink)
-
-          <a href="{{$socialLink->link}}" class="twitter"><i class="bx {{$socialLink->icon}}"></i></a>
-          <!-- <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
-          @endforeach
+          <a href="{{$socialLink->link}}" class="{{$socialLink->icon}}"><i class="bx bxl-{{$socialLink->icon}}"></i></a>
+        @endforeach
 
         </div>
       </div>

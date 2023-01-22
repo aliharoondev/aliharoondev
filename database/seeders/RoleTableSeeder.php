@@ -23,22 +23,9 @@ class RoleTableSeeder extends Seeder
             'updated_by' =>1,
         ]);
 
-        Role::create([
-            'name' => 'User',
-            'slug' => 'user',
-            'description' => 'Role for users',
-            'guard_name' => 'web',
-            'permissions' =>'{"users.dashboard":true}',
-            'created_by' =>1,
-            'updated_by' =>1,
-        ]);
-
         $user1 = User::find(1);
 
         $user1->roles()->attach(1);
 
-        $user2 = User::find(2);
-
-        $user2->roles()->attach(2);
     }
 }

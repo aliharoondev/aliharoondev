@@ -29,7 +29,7 @@ class UpdateAboutRequest extends FormRequest
             'phone' => 'required',
             'email' => 'required',
             'address' => 'required',
-            'short_discription' => 'required',
+            'short_description' => 'required',
             'birth_date' => 'required',
             'website_url' => 'required',
             'degree' => 'required',

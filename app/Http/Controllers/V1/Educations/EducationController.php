@@ -18,7 +18,7 @@ class EducationController extends Controller
      */
     public function index(Request $request)
     {
-       
+
         $educations = [];
 
         if($request->ajax() ==true) {
@@ -61,15 +61,15 @@ class EducationController extends Controller
         //     'title' => 'required',
         //     'section_id' => 'required',
         //     'degree' => 'required',
-        //     'session' => 'required',
-        //     'institude' => 'required',
+        //     'batch' => 'required',
+        //     'institute' => 'required',
         // ]);
         $education = new Education();
         $education->title = $request->title;
         $education->section_id = $request->section;
         $education->degree = $request->degree;
-        $education->session = $request->session;
-        $education->institude = $request->institude;
+        $education->batch = $request->batch;
+        $education->institute = $request->institute;
         $education->detail = $request->detail;
         $education->status = $request->status;
         $education->save();
@@ -112,8 +112,8 @@ class EducationController extends Controller
         $education->title = $request->title;
         $education->section_id = $request->section;
         $education->degree = $request->degree;
-        $education->session = $request->session;
-        $education->institude = $request->institude;
+        $education->batch = $request->batch;
+        $education->institute = $request->institute;
         $education->detail = $request->detail;
         $education->status = $request->status;
         $education->save();

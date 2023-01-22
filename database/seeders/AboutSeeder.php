@@ -18,7 +18,7 @@ class AboutSeeder extends Seeder
         About::create([
             'title'=>'UI/UX Designer & Web Developer.',
             'section_id'=>'1',
-            'short_discription'=>'Hi there, Are you looking for a unique, minimal, professional & modern landing page designer',
+            'short_description'=>'Hi there, Are you looking for a unique, minimal, professional & modern landing page designer',
             'birth_date'=>'1991-01-01 00:00:00',
             'website_url'=>'http://www.exprsol.com',
             'degree'=>'BS Hons',

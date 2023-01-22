@@ -42,8 +42,8 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Session</label>
-                                        <input type="text" id="session" name="session" class="form-control @error('session') is-invalid @enderror" value="{{ $education->session }}" placeholder="Session"/>
-                                        @error('session')
+                                        <input type="text" id="batch" name="batch" class="form-control @error('batch') is-invalid @enderror" value="{{ $education->batch }}" placeholder="Batch"/>
+                                        @error('batch')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -51,8 +51,8 @@
                                 <div class="row">
                                     <div class="col form-group">
                                         <label class="form-control-label">Institude</label>
-                                        <input type="text" id="institude" name="institude" class="form-control @error('institude') is-invalid @enderror" value="{{ $education->institude }}" placeholder="Institude"/>
-                                        @error('institude')
+                                        <input type="text" id="institute" name="institute" class="form-control @error('institute') is-invalid @enderror" value="{{ $education->institute }}" placeholder="Institude"/>
+                                        @error('institute')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

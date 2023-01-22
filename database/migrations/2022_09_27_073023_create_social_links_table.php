@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('icon');
+            $table->string('class')->nullable();
             $table->string('link')->default('https://www.facebook.com/');
             $table->timestamps();
         });

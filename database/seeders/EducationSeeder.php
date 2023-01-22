@@ -20,7 +20,7 @@ class EducationSeeder extends Seeder
             'section_id'=>'6',
             'degree'=>'Software Engineer',
             'session'=>'2016-2020',
-            'institude'=>'Univerty Of Lahore',
+            'institute'=>'Univerty Of Lahore',
             'detail'=>'I am an aspiring freelance UI Designer and Developer. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
         ]);
         Education::create([
@@ -28,7 +28,7 @@ class EducationSeeder extends Seeder
             'section_id'=>'6',
             'degree'=>'Software Engineer',
             'session'=>'2012-2016',
-            'institude'=>'Government Collage Univerty ',
+            'institute'=>'Government Collage Univerty ',
             'detail'=>'I am an aspiring freelance UI Designer and Developer. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
         ]);
     }

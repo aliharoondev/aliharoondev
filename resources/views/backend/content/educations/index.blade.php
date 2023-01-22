@@ -36,8 +36,8 @@
                                         <th>Id</th>
                                         <th>Title</th>
                                         <th>degree</th>
-                                        <th>Session</th>
-                                        <th>institude</th>
+                                        <th>Batch</th>
+                                        <th>institute</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -67,8 +67,8 @@
                     {data:'id',name:'id'},
                     {data:'title',name:'title'},
                     {data:'degree',name:'degree'},
-                    {data:'session',name:'session'},
-                    {data:'institude',name:'institude'},
+                    {data:'batch',name:'batch'},
+                    {data:'institute',name:'institute'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             });

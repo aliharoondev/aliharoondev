@@ -5,10 +5,9 @@ namespace App\Http\Controllers\V1\Portfolio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\V1\Portfolio\StorePortfolioDetailRequest;
-use App\Http\Requests\V1\Portfolio\UpdatePortfolioDetailReques;
 use App\Http\Requests\V1\Portfolio\UpdatePortfolioDetailRequest;
 use App\Models\Portfolio;
-use App\Models\portfolioDetail;
+use App\Models\PortfolioDetail;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -25,13 +24,13 @@ class PortfolioDetailController extends Controller
         $portfolio_details = [];
 
         if($request->ajax() ==true) {
-            $portfolio_details = portfolioDetail::query();
+            $portfolio_details = PortfolioDetail::query();
             return DataTables::of($portfolio_details)
-            ->addColumn('image', function ($portfolio_detail) { 
+            ->addColumn('image', function ($portfolio_detail) {
                 $url= asset('storage/'.$portfolio_detail->image);
                 return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
             })
-            ->addColumn('image2', function ($portfolio_detail) { 
+            ->addColumn('image2', function ($portfolio_detail) {
                 $url= asset('storage/'.$portfolio_detail->image2);
                 return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
             })
@@ -70,7 +69,7 @@ class PortfolioDetailController extends Controller
     {
         $path= '';
         $path_image2='';
-         $portfolio = new portfolioDetail();
+         $portfolio = new PortfolioDetail();
          $portfolio->title = $request->title;
          $portfolio->detail = $request->detail;
          $portfolio->portfolio_id = $request->portfolio;
@@ -89,10 +88,10 @@ class PortfolioDetailController extends Controller
 
         if ($request->hasFile('image2')) {
             $image2 = $request->file('image2');
-            $$path_image2 = $request->file('image2')->store('portfolio_detail','public');
+            $path_image2 = $request->file('image2')->store('portfolio_detail','public');
         }
 
-        $portfolio->image2 = $$path_image2;
+        $portfolio->image2 = $path_image2;
          $portfolio->save();
          return  redirect()->route('portfolio-details.index')->with('success','Portfolio Added Successfully');
      }
@@ -114,7 +113,7 @@ class PortfolioDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(portfolioDetail $portfolioDetail)
+    public function edit(PortfolioDetail $portfolioDetail)
     {
         $portfolio = Portfolio::select('id','title')->get();
         return view('backend.content.portfolio-details.edit',compact('portfolioDetail','portfolio'));
@@ -129,7 +128,7 @@ class PortfolioDetailController extends Controller
      */
     public function update(UpdatePortfolioDetailRequest $request, $id)
     {
-        $portfolio_detail = portfolioDetail::find($id);
+        $portfolio_detail = PortfolioDetail::find($id);
 
         $path= '';
         $path_image2='';
@@ -151,10 +150,10 @@ class PortfolioDetailController extends Controller
 
         if ($request->hasFile('image2')) {
             $image2 = $request->file('image2');
-            $$path_image2 = $request->file('image2')->store('portfolio_detail','public');
+            $path_image2 = $request->file('image2')->store('portfolio_detail','public');
         }
 
-        $portfolio_detail->image2 = $$path_image2;
+        $portfolio_detail->image2 = $path_image2;
          $portfolio_detail->save();
          return  redirect()->route('portfolio-details.index')->with('success','Portfolio Detail Update Successfully');
      }
