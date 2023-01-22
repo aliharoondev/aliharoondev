@@ -4,8 +4,8 @@ namespace App\Http\Controllers\V1\About;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\V1\about\StoreAboutRequest;
-use App\Http\Requests\V1\about\UpdateAboutRequest;
+use App\Http\Requests\V1\About\StoreAboutRequest;
+use App\Http\Requests\V1\About\UpdateAboutRequest;
 use App\Models\About;
 use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
