@@ -94,7 +94,7 @@
                   <div class="progress">
                     <span class="skill">{{$skill->title}} <i class="val">{{$skill->percentage}}%</i></span>
                     <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{$skill->percentage}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </div>
@@ -107,7 +107,7 @@
                 <div class="progress">
                       <span class="skill">{{$skill->title}} <i class="val">{{$skill->percentage}}%</i></span>
                       <div class="progress-bar-wrap">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{$skill->percentage}}" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                 </div>
               </div>
@@ -181,9 +181,8 @@
               <div class="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
                   <li data-filter="*" class="filter-active">All</li>
-                  <li data-filter=".app">App</li>
-                  <li data-filter=".web">Web</li>
-                  <li data-filter=".graphic">Graphic</li>
+                    <li data-filter=".web">Web</li>
+                    <li data-filter=".app">App</li>
                 </ul>
               </div>
             </div>

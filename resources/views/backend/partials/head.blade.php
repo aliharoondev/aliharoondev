@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techentertain</title>
+    <title>Ali Haroon</title>
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">    <!--begin::Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
