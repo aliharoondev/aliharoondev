@@ -131,12 +131,12 @@
               <div class="col-lg-6" data-aos="fade-up">
                 <h3 class="resume-title">Sumary</h3>
                 <div class="resume-item pb-0">
-                  <h4>{{$user->title}}</h4>
-                  <p><em>{{$user->address}}</em></p>
+                  <h4>{{$user->name}}</h4>
                   <ul>
                     <li>{{$user->summary}}</li>
                     <li>{{$user->phone}}</li>
                     <li>{{$user->email}}</li>
+                    <li>{{$user->address}}</li>
                   </ul>
                 </div>
 
@@ -156,10 +156,8 @@
                   <div class="resume-item">
                     <h4>{{$experience->title}}</h4>
                     <h5>{{$experience->start_date}} - {{$experience->end_date}}</h5>
-                    <p><em>{{$experience->company_name}}, {{$experience->company_address}} </em></p>
-                    <ul>
-                      <li>{{$experience->detail}}</li>
-                    </ul>
+                    <p>{{$experience->company_name}}</br><em> {{$experience->company_address}} </em></p>
+                    <p>{{$experience->detail}}</p>
                   </div>
                   @endforeach
               </div>

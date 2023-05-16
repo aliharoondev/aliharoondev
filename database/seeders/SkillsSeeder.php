@@ -16,34 +16,44 @@ class SkillsSeeder extends Seeder
     public function run()
     {
         Skill::create([
-            'title'=>'HTML',
+            'title'=>'Laravel',
             'section_id'=>'3',
             'percentage'=>'90',
         ]);
         Skill::create([
-            'title'=>'PHP',
+            'title'=>'Javascript',
             'section_id'=>'3',
             'percentage'=>'80',
         ]);
         Skill::create([
-            'title'=>'CSS',
+            'title'=>'PHP/C#',
             'section_id'=>'3',
-            'percentage'=>'90',
+            'percentage'=>'80',
         ]);
         Skill::create([
-            'title'=>'WORDPRESS/CMS',
+            'title'=>'ReactJS/VueJS',
             'section_id'=>'3',
             'percentage'=>'70',
         ]);
         Skill::create([
-            'title'=>'JAVASCRIPT',
+            'title'=>'MySQL/Postgres/MongoDB',
             'section_id'=>'3',
             'percentage'=>'80',
         ]);
         Skill::create([
             'title'=>'NodeJs',
             'section_id'=>'3',
-            'percentage'=>'90',
+            'percentage'=>'80',
+        ]);
+        Skill::create([
+            'title'=>'LInux/AWS',
+            'section_id'=>'3',
+            'percentage'=>'70',
+        ]);
+        Skill::create([
+            'title'=>'Git/Github/Bitbucket',
+            'section_id'=>'3',
+            'percentage'=>'70',
         ]);
     }
 }

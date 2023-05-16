@@ -18,24 +18,24 @@ class SocialLinkSeeder extends Seeder
     {
         SocialLink::create([
             'title'=>'twitter',
-            'icon'=>'bxl-twitter',
-            'link'=>'#'
+            'icon'=>'bx bxl-twitter',
+            'link'=>'https://twitter.com/AliharoonKhan'
         ]);
         SocialLink::create([
-            'title'=>'facebook',
-            'icon'=>'bxl-facebook',
-            'link'=>'#'
+            'title'=>'linkedin',
+            'icon'=>'bx bxl-linkedin',
+            'link'=>'https://linkedin.com/in/maliharoon/'
         ]);
-        SocialLink::create([
-            'title'=>'instagram',
-            'icon'=>'bxl-instagram',
-            'link'=>'#'
-        ]);
-        SocialLink::create([
-            'title'=>'skype',
-            'icon'=>'bxl-skype',
-            'link'=>'#'
-        ]);
+        // SocialLink::create([
+        //     'title'=>'instagram',
+        //     'icon'=>'bxl-instagram',
+        //     'link'=>'#'
+        // ]);
+        // SocialLink::create([
+        //     'title'=>'skype',
+        //     'icon'=>'bxl-skype',
+        //     'link'=>'#'
+        // ]);
         // SocialLink::create([
         //     'title'=>'linkedine',
         //     'icon'=>'bxl-linkedine',
