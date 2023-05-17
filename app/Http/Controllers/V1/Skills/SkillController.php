@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\V1\Skills;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\SkillService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\V1\Skill\StoreSkillRequest;
 use App\Http\Requests\V1\Skill\UpdateSkillRequest;
@@ -11,14 +14,8 @@ use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
 class SkillController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-    
         $skills = [];
 
         if($request->ajax() ==true) {
@@ -40,9 +37,9 @@ class SkillController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         $sections = Section::select('id', 'title')->get();
         return view('backend.content.skills.create',compact('sections'));
@@ -51,41 +48,28 @@ class SkillController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(StoreSkillRequest $request)
+    public function store(StoreSkillRequest $request): RedirectResponse
     {
-        // $validated = $request->validate([
-        //     'title' => 'required',
-        //     'section_id' => 'required',
-        // ]);
-        $skill = new Skill();
-        $skill->title = $request->title;
-        $skill->section_id = $request->section;
-        $skill->percentage = $request->percentage;
-        $skill->save();
-        return  redirect()->route('skills.index')->with('success','Skill Added Successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $skillService = new SkillService();
+            $skillService->store($request->all());
+            return  redirect()->route('skills.index')->with('success','Skill Added Successfully');
+        }
+        catch (\Exception $exception){
+            return  redirect()->route('skills.index')->with('error','Error Occurred while Adding Skill');
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Skill  $skill
+     * @return View
      */
-    public function edit(Skill $skill)
+    public function edit(Skill $skill): View
     {
         $sections = Section::select('id', 'title')->get();
         return view('backend.content.skills.edit',compact('sections','skill'));
@@ -94,30 +78,37 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param UpdateSkillRequest $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(UpdateSkillRequest $request, $id)
+    public function update(UpdateSkillRequest $request, int $id): RedirectResponse
     {
-        $skill = Skill::find($id);
-        $skill = new Skill();
-        $skill->title = $request->title;
-        $skill->section_id = $request->section;
-        $skill->percentage = $request->percentage;
-        $skill->save();
-        return  redirect()->route('skills.index')->with('success','Skill Update Successfully');
+        try {
+            $skillService = new SkillService();
+            $skillService->update($id, $request->all());
+            return  redirect()->route('skills.index')->with('success','Skill Added Successfully');
+        }
+        catch (\Exception $exception){
+            return  redirect()->route('skills.index')->with('error','Error Occurred while Updating Skill');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Skill $skill
+     * @return RedirectResponse
      */
-    public function destroy(Skill $skill)
+    public function destroy(Skill $skill): RedirectResponse
     {
-        $skill->delete();
-        return  redirect()->route('skills.index')->with('success','Skill Deleted Successfully');
+        try {
+            $skillService = new SkillService();
+            $skillService->delete($skill);
+            return  redirect()->route('skills.index')->with('success','Skill Deleted Successfully');
+        }
+        catch (\Exception $exception){
+            return  redirect()->route('skills.index')->with('error','Error Occurred while Deleting Skill');
+        }
     }
 }
