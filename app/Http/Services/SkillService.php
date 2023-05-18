@@ -8,21 +8,23 @@ class SkillService
 {
     public function store($data) : bool
     {
-        $skill = new Skill();
-        $skill->title = $data['title'];
-        $skill->section_id = $data['section'];
-        $skill->percentage = $data['percentage'];
-        $skill->save();
+        Skill::create([
+            'title'      => $data['title'],
+            'section_id' => $data['section'],
+            'percentage' => $data['percentage'],
+        ]);
+
         return true;
     }
 
     public function update($id, $data) : bool
     {
-        $skill = Skill::find($id);
-        $skill->title = $data['title'];
-        $skill->section_id = $data['section'];
-        $skill->percentage = $data['percentage'];
-        $skill->save();
+        $skill = Skill::findOrFail($id);
+        $skill->update([
+            'title'      => $data['title'],
+            'section_id' => $data['section'],
+            'percentage' => $data['percentage'],
+        ]);
         return true;
     }
 

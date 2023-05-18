@@ -14,12 +14,17 @@ use App\Models\Section;
 use Yajra\DataTables\Facades\DataTables;
 class SkillController extends Controller
 {
+
+    private $skillService;
+
+    public function __construct(SkillService $skillService)
+    {
+        $this->skillService = $skillService;
+    }
     public function index(Request $request)
     {
-        $skills = [];
-
-        if($request->ajax() ==true) {
-            $skills = Skill::query();
+        if($request->wantsJson()) {
+            $skills = Skill::query()->select('id','title','percentage');
             return DataTables::of($skills)
                 ->addColumn('action', function ($skill) {
                     $url = route('skills.edit',$skill->id);
@@ -31,7 +36,7 @@ class SkillController extends Controller
                 ->make(true);
         }
 
-        return view('backend.content.skills.index',['skills'=>$skills]);
+        return view('backend.content.skills.index');
     }
 
     /**
@@ -48,18 +53,16 @@ class SkillController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param StoreSkillRequest $request
      * @return RedirectResponse
      */
     public function store(StoreSkillRequest $request): RedirectResponse
     {
         try {
-            $skillService = new SkillService();
-            $skillService->store($request->all());
-            return  redirect()->route('skills.index')->with('success','Skill Added Successfully');
-        }
-        catch (\Exception $exception){
-            return  redirect()->route('skills.index')->with('error','Error Occurred while Adding Skill');
+            $this->skillService->store($request->validated());
+            return redirect()->route('skills.index')->with('success', 'Skill added successfully');
+        } catch (\Illuminate\Database\QueryException $exception) {
+            return redirect()->route('skills.index')->with('error', 'Error occurred while adding skill');
         }
     }
 
@@ -85,12 +88,10 @@ class SkillController extends Controller
     public function update(UpdateSkillRequest $request, int $id): RedirectResponse
     {
         try {
-            $skillService = new SkillService();
-            $skillService->update($id, $request->all());
-            return  redirect()->route('skills.index')->with('success','Skill Added Successfully');
-        }
-        catch (\Exception $exception){
-            return  redirect()->route('skills.index')->with('error','Error Occurred while Updating Skill');
+            $this->skillService->update($id, $request->validated());
+            return redirect()->route('skills.index')->with('success', 'Skill updated successfully');
+        } catch (\Illuminate\Database\QueryException $exception) {
+            return redirect()->route('skills.index')->with('error', 'Error occurred while updating skill');
         }
     }
 
