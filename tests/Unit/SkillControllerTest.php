@@ -2,8 +2,12 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-use App\Models\Skill;
+use App\Http\Controllers\V1\Skills\SkillController;
+use App\Http\Requests\V1\Skill\StoreSkillRequest;
+use App\Http\Requests\V1\Skill\UpdateSkillRequest;
+use App\Http\Services\SkillService;
+use Illuminate\Http\RedirectResponse;
+use Tests\TestCase;
 use Mockery;
 
 class SkillControllerTest extends TestCase
@@ -16,23 +20,71 @@ class SkillControllerTest extends TestCase
 
     public function testSkillsIndex()
     {
-        $request = Mockery::mock(\Illuminate\Http\Request::class);
 
-        $skill = Mockery::mock(Skill::class);
-        $skill->shouldReceive('query')->once()->andReturnSelf();
+        $response = $this->get('/skills', ['HTTP_X-Requested-With' => 'XMLHttpRequest']);
 
-        $dataTable = Mockery::mock(\Yajra\DataTables\DataTables::class);
-        $dataTable->shouldReceive('of')->once()->with($skill)->andReturnSelf();
+        $response->assertStatus(302);
+        $response->assertRedirect('/login');
 
-        $view = Mockery::mock(\Illuminate\Contracts\View\View::class);
-        $this->app->instance(\Illuminate\Contracts\View\Factory::class, $view);
-        $view->shouldReceive('make')->once()->with(true)->andReturnSelf();
+        $followedResponse = $this->get($response->headers->get('Location'));
+        $followedResponse->assertStatus(200);
 
-        $request->shouldReceive('ajax')->once()->andReturn(true);
+        $urlGenerator = app(\Illuminate\Routing\UrlGenerator::class);
+        $targetUrl = $urlGenerator->current();
 
-        $response = $this->call('GET', '/skills', [], [], [], ['HTTP_X-Requested-With' => 'XMLHttpRequest']);
+        $finalResponse = $this->get($targetUrl);
 
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertJson($response->getContent());
+        $finalResponse->assertStatus(200);
+        $response->assertRedirect('/login');
     }
+
+    public function testStoreMethod()
+    {
+        $request = Mockery::mock(StoreSkillRequest::class);
+        $request->shouldReceive('validated')->once()->andReturn([
+            'title' => 'Test Skill',
+            'section' => 3,
+            'percentage' => 90,
+        ]);
+
+        $skillService = Mockery::mock(SkillService::class);
+        $skillService->shouldReceive('store')->once()->with([
+            'title' => 'Test Skill',
+            'section' => 3,
+            'percentage' => 90,
+            ]);
+
+        $controller = new SkillController($skillService);
+
+        $response = $controller->store($request);
+
+        $this->assertInstanceOf(RedirectResponse::class, $response);
+        $this->assertEquals(route('skills.index'), $response->getTargetUrl());
+        $this->assertEquals('Skill added successfully', $response->getSession()->get('success'));
+    }
+
+    public function testUpdateMethod()
+    {
+        $request = Mockery::mock(UpdateSkillRequest::class);
+        $request->shouldReceive('validated')->once()->andReturn([
+            'title' => 'Skill Updated',
+            'section' => 3,
+            'percentage' => 80,
+        ]);
+
+        $skillService = Mockery::mock(SkillService::class);
+        $skillService->shouldReceive('update')->once()->with(3, [
+            'title' => 'Skill Updated',
+            'section' => 3,
+            'percentage' => 80,
+        ]);
+
+        $controller = new SkillController($skillService);
+        $response = $controller->update($request, 3);
+
+        $this->assertInstanceOf(RedirectResponse::class, $response);
+        $this->assertEquals(route('skills.index'), $response->getTargetUrl());
+        $this->assertEquals('Skill updated successfully', $response->getSession()->get('success'));
+    }
+
 }

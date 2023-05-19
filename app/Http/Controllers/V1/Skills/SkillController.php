@@ -39,68 +39,38 @@ class SkillController extends Controller
         return view('backend.content.skills.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return View
-     */
     public function create(): View
     {
         $sections = Section::select('id', 'title')->get();
         return view('backend.content.skills.create',compact('sections'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreSkillRequest $request
-     * @return RedirectResponse
-     */
     public function store(StoreSkillRequest $request): RedirectResponse
     {
         try {
             $this->skillService->store($request->validated());
             return redirect()->route('skills.index')->with('success', 'Skill added successfully');
-        } catch (\Illuminate\Database\QueryException $exception) {
+        } catch (\Exception $exception) {
             return redirect()->route('skills.index')->with('error', 'Error occurred while adding skill');
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  Skill  $skill
-     * @return View
-     */
     public function edit(Skill $skill): View
     {
         $sections = Section::select('id', 'title')->get();
         return view('backend.content.skills.edit',compact('sections','skill'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateSkillRequest $request
-     * @param  int  $id
-     * @return RedirectResponse
-     */
     public function update(UpdateSkillRequest $request, int $id): RedirectResponse
     {
         try {
             $this->skillService->update($id, $request->validated());
             return redirect()->route('skills.index')->with('success', 'Skill updated successfully');
-        } catch (\Illuminate\Database\QueryException $exception) {
+        } catch (\Exception $exception) {
             return redirect()->route('skills.index')->with('error', 'Error occurred while updating skill');
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  Skill $skill
-     * @return RedirectResponse
-     */
     public function destroy(Skill $skill): RedirectResponse
     {
         try {
