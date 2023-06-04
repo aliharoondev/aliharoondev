@@ -94,7 +94,7 @@
                   <div class="progress">
                     <span class="skill">{{$skill->title}} <i class="val">{{$skill->percentage}}%</i></span>
                     <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{$skill->percentage}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </div>
@@ -107,7 +107,7 @@
                 <div class="progress">
                       <span class="skill">{{$skill->title}} <i class="val">{{$skill->percentage}}%</i></span>
                       <div class="progress-bar-wrap">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{$skill->percentage}}" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                 </div>
               </div>
@@ -131,12 +131,12 @@
               <div class="col-lg-6" data-aos="fade-up">
                 <h3 class="resume-title">Sumary</h3>
                 <div class="resume-item pb-0">
-                  <h4>{{$user->title}}</h4>
-                  <p><em>{{$user->address}}</em></p>
+                  <h4>{{$user->name}}</h4>
                   <ul>
                     <li>{{$user->summary}}</li>
                     <li>{{$user->phone}}</li>
                     <li>{{$user->email}}</li>
+                    <li>{{$user->address}}</li>
                   </ul>
                 </div>
 
@@ -156,10 +156,8 @@
                   <div class="resume-item">
                     <h4>{{$experience->title}}</h4>
                     <h5>{{$experience->start_date}} - {{$experience->end_date}}</h5>
-                    <p><em>{{$experience->company_name}}, {{$experience->company_address}} </em></p>
-                    <ul>
-                      <li>{{$experience->detail}}</li>
-                    </ul>
+                    <p>{{$experience->company_name}}</br><em> {{$experience->company_address}} </em></p>
+                    <p>{{$experience->detail}}</p>
                   </div>
                   @endforeach
               </div>
@@ -181,9 +179,8 @@
               <div class="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
                   <li data-filter="*" class="filter-active">All</li>
-                  <li data-filter=".app">App</li>
-                  <li data-filter=".web">Web</li>
-                  <li data-filter=".graphic">Graphic</li>
+                    <li data-filter=".web">Web</li>
+                    <li data-filter=".app">App</li>
                 </ul>
               </div>
             </div>
@@ -195,7 +192,7 @@
                   <img src="{{ url('storage/' . $portfolio->image) }}" width="400" height="400" class="img-fluid" alt="">
                   <div class="portfolio-links">
                     <a href="{{ url('storage/' . $portfolio->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{$portfolio->title}}"><i class="bx bx-plus"></i></a>
-                    <a href="{{route('portfolio-detail',$portfolio->id)}}" width="400" height="400" title="More Details"><i class="bx bx-link"></i></a>
+                    <a href="{{route('portfolio-detail',$portfolio->id)}}" title="More Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
               </div>

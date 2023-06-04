@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('section_id')->constrained('sections');
             $table->string('degree');
-            $table->string('session');
+            $table->string('batch');
             $table->text('institute');
             $table->text('detail');
             $table->string('status')->default('active');

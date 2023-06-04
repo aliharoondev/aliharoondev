@@ -16,67 +16,46 @@ class PortfolioSeeder extends Seeder
     public function run()
     {
         Portfolio::create([
-            'title'=>'App',
-            'section_id'=>'7',
-            'category'=>'app',
-            'detail'=>'I am an aspiring App Developer. I have more than 3 years of experience as a UI Designer also an expert in App Developer. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/app1.jpg',
-        ]);
-        Portfolio::create([
-            'title'=>'App',
-            'section_id'=>'7',
-            'category'=>'app',
-            'detail'=>'I am an aspiring App Developer. I have more than 3 years of experience as a UI Designer also an expert in App Developer. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/app2.jpg',
-        ]);
-        Portfolio::create([
-            'title'=>'App',
-            'section_id'=>'7',
-            'category'=>'app',
-            'detail'=>'I am an aspiring App Developer. I have more than 3 years of experience as a UI Designer also an expert in App Developer. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/app3.jpg',
-        ]);
-        Portfolio::create([
             'title'=>'Web',
             'section_id'=>'7',
             'category'=>'web',
-            'detail'=>'I am an aspiring Web Designer and Developer. I have more than 3 years of experience as a Web Designer and Developer.. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/web1.jpg',
+            'detail'=>'	I am an aspiring App Developer. I have more than 3 years of experience as a UI Designer also an expert in App Developer. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
+            'image'=>'portfolio/web.jpg',
         ]);
         Portfolio::create([
-            'title'=>'Web',
+            'title'=>'VandA',
             'section_id'=>'7',
             'category'=>'web',
-            'detail'=>'I am an aspiring Web Designer and Developer. I have more than 3 years of experience as a Web Designer and Developer.. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/web2.jpg',
+            'detail'=>'I am an aspiring App Developer. I have more than 3 years of experience as a UI Designer also an expert in App Developer. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
+            'image'=>'portfolio/VandA.jpg',
         ]);
         Portfolio::create([
-            'title'=>'Web',
+            'title'=>'Triptax',
+            'section_id'=>'7',
+            'category'=>'app',
+            'detail'=>'Lead Developer at Triptax',
+            'image'=>'portfolio/triptax.jpg',
+        ]);
+        Portfolio::create([
+            'title'=>'Careem',
             'section_id'=>'7',
             'category'=>'web',
-            'detail'=>'I am an aspiring Web Designer and Developer. I have more than 3 years of experience as a Web Designer and Developer.. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/web3.jpg',
+            'detail'=>'Worked on the Outbound section of the Careem. A service more like Uber. Developed it from scratch to end and used technologies like Laravel as a backend, React on frontend and MySQL as a Database.',
+            'image'=>'portfolio/careem.jpg',
         ]);
         Portfolio::create([
-            'title'=>'Graphic Design',
+            'title'=>'Baritastic',
             'section_id'=>'7',
-            'category'=>'graphic design',
-            'detail'=>'I am an aspiring Graphic Design. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/graphic1.jpg',
+            'category'=>'app',
+            'detail'=>'Lead Developer',
+            'image'=>'portfolio/baritastic.jpg',
         ]);
         Portfolio::create([
-            'title'=>'Graphic Design',
+            'title'=>'CareAsOne',
             'section_id'=>'7',
-            'category'=>'graphic design',
-            'detail'=>'I am an aspiring Graphic Design. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/graphic2.jpg',
-        ]);
-        Portfolio::create([
-            'title'=>'Graphic Design',
-            'section_id'=>'7',
-            'category'=>'graphic design',
-            'detail'=>'I am an aspiring Graphic Design. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'portfolio/graphic3.jpg',
+            'category'=>'web',
+            'detail'=>'CareAsOne is the go-to solution for both caretakers and employers in the elderly care industry. We’re the most efficient and easy-to-use platform when it comes to finding caregivers, nurses and more. We remove the headache that comes with the hiring process because we care.',
+            'image'=>'portfolio/careasone.jpg',
         ]);
     }
 }

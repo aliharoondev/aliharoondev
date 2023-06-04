@@ -18,61 +18,61 @@ class SectionSeeder extends Seeder
         Section::create([
             'title'=>'About',
             'slug'=>'about',
-            'detail'=>'This Section About',
+            'detail'=>'About Ali Haroon. What I am and what I do.',
             'status'=>'active'
         ]);
         Section::create([
             'title'=>'Facts',
             'slug'=>'facts',
-            'detail'=>'This Section about Facts',
+            'detail'=>'Interesting fun facts about Ali Haroon',
             'status'=>'active'
         ]);
         Section::create([
             'title'=>'Skills',
             'slug'=>'skills',
-            'detail'=>'This Section about Skills',
+            'detail'=>'What skills we have got and currently working on including top notch and cutting edge technologies',
             'status'=>'active'
         ]);
         Section::create([
             'title'=>'Resume',
             'slug'=>'resume',
-            'detail'=>'This Section about Resume',
+            'detail'=>'More expressive detail of above "About" section',
             'status'=>'active'
         ]);
         Section::create([
             'title'=>'Education',
             'slug'=>'education',
-            'detail'=>'This Section about Education',
+            'detail'=>'Detail on my educational background',
             'status'=>'active'
         ]);
         Section::create([
             'title'=>'Experience',
             'slug'=>'experience',
-            'detail'=>'This Section about Experience',
+            'detail'=>'Collaboration with teams and Organization',
             'status'=>'active'
         ]);
          Section::create([
             'title'=>'Portfolio',
             'slug'=>'portfolio',
-            'detail'=>'This Section about Portfolio',
+            'detail'=>'A short tour of what I have done.',
             'status'=>'active'
         ]);
          Section::create([
             'title'=>'Services',
             'slug'=>'services',
-            'detail'=>'This Section about Services',
+            'detail'=>'List of the services we currently offer',
             'status'=>'active'
         ]);
          Section::create([
             'title'=>'Testimonials',
             'slug'=>'testimonials',
-            'detail'=>'This Section about Testimonials',
+            'detail'=>'What others saying',
             'status'=>'active'
         ]);
          Section::create([
             'title'=>'Contact',
             'slug'=>'contact',
-            'detail'=>'This Section about Contact',
+            'detail'=>'How you can reach `ME`',
             'status'=>'active'
         ]);
 

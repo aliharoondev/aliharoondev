@@ -41,10 +41,89 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label class="control-label col-md-3">Title</label>
+                                            <div class="col">
+                                                <input type="text" id="title" value="{{$user->title ?? old('title')}}" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Title">
+                                                @error('title')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label class="control-label col-md-3">Email</label>
                                             <div class="col">
                                                 <input type="email" tabindex="1" id="email" name="email" value="{{$user->email ?? old('email')}}" style="width: 100%;" class="form-control @error('email') is-invalid @enderror">
                                                 @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Summary</label>
+                                            <div class="col">
+                                                <input type="text" tabindex="1" id="summary" name="summary" value="{{$user->summary ?? old('summary')}}" style="width: 100%;" class="form-control @error('summary') is-invalid @enderror">
+                                                @error('summary')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Address</label>
+                                            <div class="col">
+                                                <input type="text" tabindex="1" id="address" name="address" value="{{$user->address ?? old('address')}}" style="width: 100%;" class="form-control @error('address') is-invalid @enderror">
+                                                @error('address')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Phone</label>
+                                            <div class="col">
+                                                <input type="text" tabindex="1" id="phone" name="phone" value="{{$user->phone ?? old('phone')}}" style="width: 100%;" class="form-control @error('phone') is-invalid @enderror">
+                                                @error('phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Image</label>
+                                            <div class="col">
+                                                <input type="file" tabindex="1" id="image" name="image" value="{{$user->image ?? old('image')}}" style="width: 100%;" class="form-control @error('image') is-invalid @enderror">
+                                                @error('image')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

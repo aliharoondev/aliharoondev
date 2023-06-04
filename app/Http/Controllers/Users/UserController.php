@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\StoreUserRequest;
-use App\Http\Requests\Users\UpdateUserRequest;
+use App\Http\Requests\V1\Users\StoreUserRequest;
+use App\Http\Requests\V1\Users\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -94,9 +94,19 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        $path= '';
         $user->name = request('name');
         $user->email = request('email');
+        $user->title = request('title');
+        $user->summary = request('summary');
+        $user->address = request('address');
+        $user->phone = request('phone');
         $user->password = request('password')?Hash::make(request('password')) : $user->password;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $request->file('image')->store('user','public');
+        }  
+        $user->image = $path; 
         $user->save();
         return redirect(route('users.index'))->with('success','User Updated Successfully');
     }

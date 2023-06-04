@@ -19,7 +19,7 @@ class ServiceSeeder extends Seeder
             'title'=>'Software Development',
             'section_id'=>'8',
             'icon'=>'bi-microsoft',
-            'detail'=>'Having been into the business since 2011, we hold unmatchable expertise in software development. Delivery of more than 1,00 software projects have enabled us to work on variety of architectures, technologies, databases and scales. ',
+            'detail'=>'Having been into the business since 2011, we hold unmatchable expertise in software development. Delivery of more than 1,00 software projects have enabled us to work on variety of architectures, technologies, databases and scales.',
         ]);
         Service::create([
             'title'=>'Mobile Development',

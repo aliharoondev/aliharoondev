@@ -16,18 +16,18 @@ class AboutSeeder extends Seeder
     public function run()
     {
         About::create([
-            'title'=>'UI/UX Designer & Web Developer.',
+            'title'=>'Full Stack Developer.',
             'section_id'=>'1',
-            'short_description'=>'Hi there, Are you looking for a unique, minimal, professional & modern landing page designer',
-            'birth_date'=>'1991-01-01 00:00:00',
-            'website_url'=>'http://www.exprsol.com',
-            'degree'=>'BS Hons',
-            'phone'=>'+92 123456789',
-            'email'=>'exapmle@gmail.com',
-            'address'=>'G-38 ground floor Suidiq trade center, Gulberg 2, Lahore, 54000',
+            'short_description'=>'A full stack developer possessing a strong understanding of multiple programming languages, frameworks and technologies, and have the ability to develop and maintain complex systems. ',
+            'birth_date'=>'1993-04-22',
+            'website_url'=>'http://aliharoon.dev',
+            'degree'=>'BS Hons Computer Science',
+            'phone'=>' +92 345 4647216',
+            'email'=>'me@aliharoon.dev',
+            'address'=>'Lahore, PAK',
             'freelance'=>'Available',
-            'detail'=>'I am an aspiring freelance UI Designer and Developer. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-            'image'=>'about/K7FgjQcieJhbxA9ydyTSTQ71YjVKmSHsdEK40FAx.jpg',
+            'detail'=>'Love To Work with PHP .Net Framework and mvc based website and like to work with those people who really want quality in their Environment. Only work is not the thing that impress anyone But uniqueness and efficiencies does. Curious and intrested in learning new Technologies.',
+            'image'=>'about/aliharoon.jpg',
         ]);
     }
 }

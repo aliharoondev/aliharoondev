@@ -1,4 +1,4 @@
-<header id="header">
+    <header id="header">
     <div class="d-flex flex-column">
 
       <div class="profile">
@@ -6,7 +6,7 @@
         <h1 class="text-light"><a href="{{route('landing')}}">{{$users->name}}</a></h1>
         <div class="social-links mt-3 text-center">
         @foreach($socialLinks as $socialLink)
-          <a href="{{$socialLink->link}}" class="{{$socialLink->icon}}"><i class="bx bxl-{{$socialLink->icon}}"></i></a>
+          <a href="{{$socialLink->link}}" class="{{$socialLink->class}}"><i class="{{$socialLink->icon}}"></i></a>
         @endforeach
 
         </div>

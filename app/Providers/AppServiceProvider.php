@@ -6,6 +6,7 @@ use App\Models\SocialLink;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,10 +27,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $socialLinks = SocialLink::all();
-        View::share('socialLinks', $socialLinks ?? null);
 
-        $users = User::where('id',1)->first();
-        View::share('users', $users);
+        if (Schema::hasTable('social_links')) {
+            $socialLinks = SocialLink::all();
+            View::share('socialLinks', $socialLinks ?? null);
+        }
+        if (Schema::hasTable('users')) {
+            $users = User::where('id',1)->first();
+            View::share('users', $users);
+        }
+
+
+
     }
 }

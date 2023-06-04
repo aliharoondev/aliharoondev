@@ -16,20 +16,12 @@ class EducationSeeder extends Seeder
     public function run()
     {
         Education::create([
-            'title'=>'UI/UX Designer & Web Developer.',
+            'title'=>'Bachelor of Computer Science',
             'section_id'=>'6',
-            'degree'=>'Software Engineer',
-            'session'=>'2016-2020',
-            'institute'=>'Univerty Of Lahore',
-            'detail'=>'I am an aspiring freelance UI Designer and Developer. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
-        ]);
-        Education::create([
-            'title'=>'Graphic Design.',
-            'section_id'=>'6',
-            'degree'=>'Software Engineer',
-            'session'=>'2012-2016',
-            'institute'=>'Government Collage Univerty ',
-            'detail'=>'I am an aspiring freelance UI Designer and Developer. I have more than 3 years of experience as a UI Designer also an expert in Graphic Design. I am a professional Web Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
+            'degree'=>'BS Hons Computer Science',
+            'batch'=>'2012 - 2016',
+            'institute'=>'G.C. University, Faisalabad',
+            'detail'=>'Outstanding and motivated university graduate with a strong academic record and a passion for learning. Proven ability to excel in a challenging academic environment, with a broad range of coursework in Computer Science',
         ]);
     }
 }

@@ -18,30 +18,30 @@ class FactsSeeder extends Seeder
         Fact::create([
             'title'=>'Happy Clients',
             'section_id'=>'2',
-            'detail'=>'consequuntur quae',
+            'detail'=>'with great satisfaction',
             'icon'=>'bi-emoji-smile',
-            'number'=>'223'
+            'number'=>'27'
         ]);
         Fact::create([
             'title'=>'Projects ',
             'section_id'=>'2',
-            'detail'=>'adipisci atque cum quia aut',
+            'detail'=>'delivered successfully',
             'icon'=>'bi-journal-richtext',
-            'number'=>'521'
+            'number'=>'52'
         ]);
         Fact::create([
             'title'=>'Hours Of Support',
             'section_id'=>'2',
-            'detail'=>'aut commodi quaerat',
+            'detail'=>'provided to clients',
             'icon'=>'bi-headset',
             'number'=>'1453'
         ]);
         Fact::create([
             'title'=>'Hard Workers',
             'section_id'=>'2',
-            'detail'=>'rerum asperiores dolor',
+            'detail'=>'affiliated with me',
             'icon'=>'bi-people',
-            'number'=>'35'
+            'number'=>'3'
         ]);
     }
 }

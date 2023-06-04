@@ -18,7 +18,7 @@ class SocialLinkController extends Controller
      */
     public function index(Request $request)
     {
-    
+
         $sociallinks = [];
 
         if($request->ajax() ==true) {
@@ -102,7 +102,6 @@ class SocialLinkController extends Controller
     public function update(UpdateSocialLinkRequest $request, $id)
     {
         $sociallink = SocialLink::find($id);
-        $sociallink = new SocialLink();
         $sociallink->title = $request->title;
         $sociallink->icon = $request->icon;
         $sociallink->link = $request->link;
