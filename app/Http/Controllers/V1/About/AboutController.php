@@ -95,29 +95,15 @@ class AboutController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(About $about)
     {
         $sections = Section::select('id', 'title')->get();
         return view('backend.content.abouts.edit',compact('sections','about'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateAboutRequest $request, $id)
     {
         $about = About::find($id);
-        $path= '';
         $about->title = $request->title;
         $about->section_id = $request->section;
         $about->short_description = $request->short_description;
@@ -130,10 +116,10 @@ class AboutController extends Controller
         $about->freelance = $request->freelance;
         $about->detail = $request->detail;
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
             $path = $request->file('image')->store('about','public');
+            $about->image = $path;
         }
-        $about->image = $path;
+
         $about->save();
         return  redirect()->route('about.index')->with('success','About Update Successfully');
     }
@@ -142,7 +128,7 @@ class AboutController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(About $about)
     {
