@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('section_id')->constrained('sections');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->string('company_name');
             $table->string('company_address');
             $table->enum('work_type',['remote','onsite'])->default('remote');
-            $table->enum('job_type',['half time','full time','freelance','as you demand'])->default('full time');
-            $table->text('detail');
+            $table->enum('job_type',['part time','full time','freelance'])->default('freelance');
+            $table->text('detail')->nullable();
             $table->timestamps();
         });
     }

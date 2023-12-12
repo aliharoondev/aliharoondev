@@ -18,22 +18,22 @@ class PortfolioDetailSeeder extends Seeder
         PortfolioDetail::create([
             'title'=>'App',
             'category'=>'App',
-            'client'=>'Us',
+            'client'=>'US',
             'portfolio_id'=>'1',
             'project_date'=>'01-02-2020',
             'project_url'=>'https://www.eccountant.co/',
-            'detail'=>'I am an aspiring freelance Ios Developer. I have more than 3 years of experience as a Ios I am a professional Ios Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
+            'detail'=>'I am an aspiring App Developer. I have more than 3 years of experience working as a Cross Platform App Developer.',
             'image'=>'portfolio_detail/web.jpg',
             'image2'=>'portfolio_detail/web.jpg',
         ]);
         PortfolioDetail::create([
-            'title'=>'Ios',
-            'category'=>'ios',
-            'client'=>'Us',
+            'title'=>'IOS',
+            'category'=>'App',
+            'client'=>'US',
             'portfolio_id'=>'2',
             'project_date'=>'01-08-2020',
             'project_url'=>'https://www.eccountant.co/',
-            'detail'=>'I am an aspiring freelance Ios Developer. I have more than 3 years of experience as a Ios I am a professional Ios Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
+            'detail'=>'I am an aspiring App Developer. I have more than 3 years of experience working as a Cross Platform App Developer.',
             'image'=>'portfolio_detail/VandA.jpg',
             'image2'=>'portfolio_detail/VandA.jpg',
         ]);
@@ -77,7 +77,7 @@ class PortfolioDetailSeeder extends Seeder
             'portfolio_id'=>'6',
             'project_date'=>'01-02-2021',
             'project_url'=>'https://www.eccountant.co/',
-            'detail'=>'I am an aspiring freelance Ios Developer. I have more than 3 years of experience as a Ios I am a professional Ios Developer too. I am looking to get a better relationship with clients, I personally believe that client satisfaction is more importan',
+            'detail'=>'I am an aspiring App Developer. I have more than 3 years of experience working as a Cross Platform App Developer.',
             'image'=>'portfolio_detail/triptax.jpg',
             'image2'=>'portfolio_detail/triptax.jpg',
         ]);
