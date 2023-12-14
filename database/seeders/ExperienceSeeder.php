@@ -32,10 +32,10 @@ class ExperienceSeeder extends Seeder
             'start_date'=>'2021-05-17',
             'end_date'=>'2023-06-17',
             'company_name'=>'Abacus Consulting',
-            'company_address'=>'The Enterprise, Building 1, 2nd Floor, 15 - KM Multan Road Lahore, Pakistan.',
+            'company_address'=>'Shaheen Complex, 2nd Floor, Lahore, Pakistan.',
             'work_type'=>'onsite',
             'job_type'=>'full time',
-            'detail'=>'Served the organization as a PHP Software Engineer and contributed in the mega projects like careem, PLRA, PSDF.',
+            'detail'=>'Served the organization as a PHP Software Engineer and contributed in the mega projects like Careem, PLRA, PSDF.',
         ]);
     }
 }

@@ -34,7 +34,7 @@ class UpdateAboutRequest extends FormRequest
             'website_url' => 'required',
             'degree' => 'required',
             'freelance' => 'required',
-            'image' => 'required',
+            'image' => 'nullable',
         ];
     }
 }
