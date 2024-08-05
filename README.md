@@ -6,3 +6,4 @@
 - 👯 I’m looking to collaborate on Laravel projects and Shopify Apps.
 - 💬 Ask me about Laravel only!
 - 📫 How to reach me: twitter.com/@AliharoonKhan
+- 📫 How to reach me on linkedin: linkedin.com/maliharoon
