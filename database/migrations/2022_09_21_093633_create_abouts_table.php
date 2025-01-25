@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->foreignId('section_id')->constrained('sections');
+            $table->string('title');
             $table->string('short_description');
             $table->date('birth_date');
             $table->string('website_url')->default('N/A');
@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('phone')->default('N/A');
             $table->string('email')->default('N/A');
             $table->string('address')->default('N/A');
-            $table->string('freelance')->default('N/A');
+            $table->string('freelance')->default('Available');
             $table->text('detail');
-            $table->string('image')->nullable();
+            $table->string('image')->default('global/about/aliharoon.jpg');
             $table->timestamps();
         });
     }

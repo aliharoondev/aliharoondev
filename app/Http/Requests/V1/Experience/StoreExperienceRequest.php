@@ -24,15 +24,15 @@ class StoreExperienceRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|string|max:255',
             'section' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
+            'end_date' => 'sometimes',
             'company_name' => 'required',
             'company_address' => 'required',
             'work_type' => 'required',
             'job_type' => 'required',
-            'detail' => 'required',
+            'detail' => 'sometimes',
         ];
     }
 }

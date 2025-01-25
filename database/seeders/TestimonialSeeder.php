@@ -20,7 +20,7 @@ class TestimonialSeeder extends Seeder
             'section_id'=>'9',
             'title'=>'CEO & Founder',
             'image'=>'testimonials/testimonials-1.jpg',
-            'testimonial_text'=>'I had the pleasure of working with Ali on a complex project and was constantly impressed by their technical skills and problem-solving abilities. They consistently delivered high-quality code, always hit their deadlines, and went above and beyond to ensure the success of the project. I would highly recommend them to any team looking for a top-notch software engineer'
+            'testimonial_text'=>'I had the pleasure of working with Ali Haroon on a complex project and was constantly impressed by their technical skills and problem-solving abilities. They consistently delivered high-quality code, always hit their deadlines, and went above and beyond to ensure the success of the project. I would highly recommend them to any team looking for a top-notch software engineer'
         ]);
         Testimonial::create([
             'name'=>'Sara ',
@@ -34,14 +34,14 @@ class TestimonialSeeder extends Seeder
             'section_id'=>'9',
             'title'=>'Store Owner',
             'image'=>'testimonials/testimonials-3.jpg',
-            'testimonial_text'=>'I have never worked with a more dedicated and hardworking software engineer than this guy(Ali). he has a deep understanding of programming languages and software development best practices, and are always willing to lend a hand and share their expertise with others'
+            'testimonial_text'=>'I have never worked with a more dedicated and hardworking software engineer than Ali Haroon. He has a deep understanding of programming languages and software development best practices, and is always willing to lend a hand and share his expertise with others'
         ]);
         Testimonial::create([
             'name'=>'Matt Brandon',
             'section_id'=>'9',
-            'title'=>'Freelancer',
+            'title'=>'CTO',
             'image'=>'testimonials/testimonials-4.jpg',
-            'testimonial_text'=>'"I was impressed by M.ALi Haroon ability to quickly understand complex requirements and turn them into high-quality code. Their attention to detail and commitment to delivering outstanding results made them a valuable asset to our team. I would highly recommend Ali to any organization looking for a talented and reliable software engineer.'
+            'testimonial_text'=>'"I was impressed by Ali Haroon ability to quickly understand complex requirements and turn them into high-quality code. Their attention to detail and commitment to delivering outstanding results made them a valuable asset to our team. I would highly recommend [Engineer Name] to any organization looking for a talented and reliable software engineer.'
         ]);
         Testimonial::create([
             'name'=>'John Larson',

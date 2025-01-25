@@ -15,7 +15,7 @@
             <div class="row">
             @foreach($about as $ab)
               <div class="col-lg-4" data-aos="fade-right">
-                <img src="{{ url('storage/' . $ab->image) }}" class="img-fluid" alt="">
+                <img src="{{ asset($ab->image) }}" class="img-fluid" alt="">
               </div>
               <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
                 <h3>{{$ab->title}}</h3>

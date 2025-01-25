@@ -34,9 +34,9 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('deleted_by')->nullable();
         });
         User::create([
-            'name' => 'M.Ali Haroon',
+            'name' => 'Ali Haroon',
             'title' => 'Software Engineer',
-            'image' => 'user/aliharoon-profile.png',
+            'image' => 'global/about/aliharoon.jpg',
             'summary' => 'Highly skilled and motivated Full Stack Developer with over 5+ years of experience in developing and maintaining web applications. With a comprehensive understanding of how to design and build fast, secure, and scalable applications. Excellent problem-solving skills, and a commitment to producing high-quality work. Seeking a challenging role where I can utilize my skills and experience to create innovative and user-friendly web applications.',
             'address' => 'Saddiq Trade Center Gulberg, Lahore',
             'phone' => '+92 345 4647216',

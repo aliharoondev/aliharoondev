@@ -18,13 +18,13 @@ class ExperienceSeeder extends Seeder
         Experience::create([
             'title'=>'Senior Software Engineer',
             'section_id'=>'6',
-            'start_date'=>'2020-02-10',
-            'end_date'=>'2023-12-31',
-            'company_name'=>'Sixlogics/Brainx',
-            'company_address'=>'27, F Block, Johar Town, Lahore',
+            'start_date'=>'2020-02-17',
+            //'end_date'=>'',
+            'company_name'=>'Brainx',
+            'company_address'=>'27, Block L Johar Town, Lahore, Punjab 54000',
             'work_type'=>'remote',
             'job_type'=>'freelance',
-            'detail'=>'Lead in the development, and implementation of the logic, layout, and production communication materials ',
+            'detail'=>'Working with team of resources. Server management, Continuous Integration Management. Communication with Client and offshore developers. Project upgrades / Enhancements / Fixes and Updates. ',
         ]);
         Experience::create([
             'title'=>'Senior Software Engineer',

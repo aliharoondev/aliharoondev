@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
-            $table->string('detail');
-            $table->string('status')->default('active');
+            $table->string('slug')->unique();
+            $table->string('detail')->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
