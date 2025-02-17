@@ -46,7 +46,7 @@ class TestimonialContoller extends Controller
     public function create()
     {
         $sections = Section::select('id', 'title')->get();
-        return view('backend.content.testimonials.create',compact('sections')); 
+        return view('backend.content.testimonials.create',compact('sections'));
    }
 
     /**
@@ -72,69 +72,52 @@ class TestimonialContoller extends Controller
             $image = $request->file('image');
             // $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $request->file('image')->store('testimonials','public');
-        }  
-        $testimonial->image = $path;   
+        }
+        $testimonial->image = $path;
         $testimonial->save();
         return  redirect()->route('testimonial.index')->with('success','Testimonial Added Successfully');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show($id): void
     {
-        //
+        //#Note Need to implement show method
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Testimonial $testimonial)
     {
         $sections = Section::select('id', 'title')->get();
         return view('backend.content.testimonials.edit',compact('sections','testimonial'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateTestimonialRequest $request, $id)
+    public function update(UpdateTestimonialRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
-        $testimonial = Testimonial::find($id);
-        $path= '';
-        $testimonial = new Testimonial();
-        $testimonial->name = $request->name;
-        $testimonial->title = $request->title;
-        $testimonial->section_id = $request->section;
-        $testimonial->testimonial_text = $request->testimonial_text;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            // $filename = time() . '.' . $image->getClientOriginalExtension();
-            $path = $request->file('image')->store('testimonials','public');
-        }  
-        $testimonial->image = $path;   
-        $testimonial->save();
-        return  redirect()->route('testimonial.index')->with('success','Testimonial Update Successfully');
+        try {
+            $testimonial = Testimonial::find($id);
+            $testimonial->name = $request->name;
+            $testimonial->title = $request->title;
+            $testimonial->section_id = $request->section;
+            $testimonial->testimonial_text = $request->testimonial_text;
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('testimonials','public');
+                $testimonial->image = $path;
+            }
+            $testimonial->save();
+
+            return  redirect()->route('testimonial.index')->with('success','Testimonial Update Successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Testimonial $testimonial)
+    public function destroy(Testimonial $testimonial): \Illuminate\Http\RedirectResponse
     {
-        $testimonial->delete();
-        return  redirect()->route('testimonial.index')->with('success','Testimonial Deleted Successfully');
+        try {
+            Storage::disk('public')->delete($testimonial->image);
+            $testimonial->delete();
+            return  redirect()->route('testimonial.index')->with('success','Testimonial Deleted Successfully');
+        } catch (\Exception $e) {
+            logger(["Error in deleting testimonial, id = $testimonial->id" => $e->getMessage()]);
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

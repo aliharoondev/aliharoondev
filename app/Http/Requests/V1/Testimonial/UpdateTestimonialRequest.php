@@ -27,7 +27,6 @@ class UpdateTestimonialRequest extends FormRequest
             'name' => 'required',
             'title' => 'required',
             'section' => 'required',
-            'image' => 'required',
             'testimonial_text' => 'required',
         ];
     }
