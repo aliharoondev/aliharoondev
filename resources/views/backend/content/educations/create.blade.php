@@ -50,8 +50,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
-                                        <label class="form-control-label">Institude</label>
-                                        <input type="text" id="institute" name="institute" class="form-control @error('institute') is-invalid @enderror" value="{{old('institute')}}" placeholder="Institude"/>
+                                        <label class="form-control-label">Institute</label>
+                                        <input type="text" id="institute" name="institute" class="form-control @error('institute') is-invalid @enderror" value="{{old('institute')}}" placeholder="Institute"/>
                                         @error('institute')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
