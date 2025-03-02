@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'General\PagesController@landing')->name('landing');
-Route::post('/contact', 'General\ContactController@store')->name('contact.store');
+Route::post('/write-us', 'General\ContactController@store')->name('writeus.store')->middleware('throttle:2,1');
 Route::get('portfolio-detail/{id}', 'General\PagesController@portfolio_detail')->name('portfolio-detail');
 
 

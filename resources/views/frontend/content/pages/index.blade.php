@@ -295,28 +295,29 @@
               </div>
 
               <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                <form action="{{ route('contact.store') }}" method="post" class="php-email-form">
+                <form action="{{ route('writeus.store') }}" method="post" class="php-email-form">
+                    @csrf
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="name">Your Name</label>
                       <input type="text" name="name" class="form-control" id="name" required>
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="name">Your Email</label>
+                      <label for="email">Your Email</label>
                       <input type="email" class="form-control" name="email" id="email" required>
                     </div>
                     <div class="form-group col-md-12">
-                      <label for="name">Your Phone</label>
+                      <label for="phone">Your Phone</label>
                       <input type="text" class="form-control" name="phone" id="phone" required>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="name">Subject</label>
+                    <label for="subject">Subject</label>
                     <input type="text" class="form-control" name="subject" id="subject" required>
                   </div>
                   <div class="form-group">
-                    <label for="name">Message</label>
-                    <textarea class="form-control" name="message" rows="10" required></textarea>
+                    <label for="message">Message</label>
+                    <textarea class="form-control" name="message" id="message" rows="10" required></textarea>
                   </div>
                   <div class="my-3">
                     <div class="loading">Loading</div>

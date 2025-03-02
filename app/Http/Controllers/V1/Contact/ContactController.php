@@ -21,7 +21,7 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         $contact = [];
 
         if($request->ajax() ==true) {
@@ -48,24 +48,11 @@ class ContactController extends Controller
     public function create()
     {
         $sections = Section::select('id', 'title')->get();
-        return view('backend.content.contact.create',compact('sections'));   
+        return view('backend.content.contact.create',compact('sections'));
      }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreContactRequest $request)
     {
-        //   $validated = $request->validate([
-        //     'title' => 'required',
-        //     'section_id' => 'required',
-        //     'phone' => 'required',
-        //     'email' => 'required',
-        //     'address' => 'required',
-        // ]);
         $contact = new ContactUs();
         $contact->address = $request->address;
         $contact->section_id = $request->section;
@@ -78,36 +65,17 @@ class ContactController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(ContactUs $contact)
     {
         $sections = Section::select('id', 'title')->get();
         return view('backend.content.contact.edit',compact('sections','contact'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateContactRequest $request, $id)
     {
         $contact = ContactUs::find($id);
@@ -121,12 +89,6 @@ class ContactController extends Controller
         return  redirect()->route('contact.index')->with('success','Contact Update Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(ContactUs $contact)
     {
         $contact->delete();
