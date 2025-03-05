@@ -192,7 +192,7 @@
                   <img src="{{ url('storage/' . $portfolio->image) }}" width="400" height="400" class="img-fluid" alt="">
                   <div class="portfolio-links">
                     <a href="{{ url('storage/' . $portfolio->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{$portfolio->title}}"><i class="bx bx-plus"></i></a>
-                    <a href="{{route('portfolio-detail',$portfolio->id)}}" title="More Details"><i class="bx bx-link"></i></a>
+{{--                    <a href="{{route('portfolio-detail',$portfolio->id)}}" title="More Details"><i class="bx bx-link"></i></a>--}}
                   </div>
                 </div>
               </div>

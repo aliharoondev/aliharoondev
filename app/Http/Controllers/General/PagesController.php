@@ -41,6 +41,9 @@ class PagesController extends Controller
     public function portfolio_detail($id)
     {
         $portfolioDetail = PortfolioDetail::where('portfolio_id',$id)->first();
+        if (!$portfolioDetail){
+            return redirect()->back();
+        }
         return view('frontend.content.pages.portfolio-details',compact('portfolioDetail'));
     }
 }
