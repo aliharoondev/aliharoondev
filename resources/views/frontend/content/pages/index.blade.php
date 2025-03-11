@@ -40,9 +40,6 @@
                     </ul>
                   </div>
                 </div>
-                <p>
-                {{$ab->detail}}
-                 </p>
               </div>
               @endforeach
             </div>
