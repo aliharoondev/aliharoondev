@@ -46,7 +46,7 @@
 
           </div>
         </section>
-     <!-- End About Section -->
+        <!-- End About Section -->
 
         <!-- ======= Facts Section ======= -->
         <section id="{{strtolower($sections[1]->slug)}}" class="{{strtolower($sections[1]->slug)}}">
